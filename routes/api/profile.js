@@ -38,10 +38,10 @@ router.post(
   [
     auth,
     [
-      check("status", "Status is required")
+      check("age", "Age is required")
         .not()
         .isEmpty(),
-      check("skills", "Skills is required")
+      check("location", "Location is required")
         .not()
         .isEmpty()
     ]
@@ -52,31 +52,24 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     const {
-      company,
       location,
-      website,
       bio,
-      skills,
-      status,
-      githubusername,
+      age,
+      interests,
       youtube,
       twitter,
       instagram,
-      linkedin,
       facebook
     } = req.body;
 
     //Build profile object
     const profileFields = {};
     profileFields.user = req.user.id;
-    if (company) profileFields.company = company;
-    if (website) profileFields.website = website;
+    if (age) profileFields.age = age;
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;
-    if (status) profileFields.status = status;
-    if (githubusername) profileFields.githubusername = githubusername;
-    if (skills) {
-      profileFields.skills = skills.split(",").map(skill => skill.trim());
+    if (interests) {
+      profileFields.interests = interests.split(",").map(interest => interest.trim());
       //Nebitno pise li HTML, PHP ili HTML,PHP tj. je li samo zarez ili zarez i razmak
     }
 
@@ -85,7 +78,6 @@ router.post(
     if (youtube) profileFields.social.youtube = youtube;
     if (twitter) profileFields.social.twitter = twitter;
     if (facebook) profileFields.social.facebook = facebook;
-    if (linkedin) profileFields.social.linkedin = linkedin;
     if (instagram) profileFields.social.instagram = instagram;
 
     try {
