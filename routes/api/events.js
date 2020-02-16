@@ -36,7 +36,9 @@ router.post(
       const newEvent = new Event({
         text: req.body.text,
         name: user.name,
-        user: req.user.id
+        user: req.user.id,
+        location: req.body.location,
+        date: req.body.date
       });
 
       const event = await newEvent.save();
