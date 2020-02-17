@@ -28,7 +28,7 @@ const Login = () => {
                     <input type="email" 
                         className="form-control" 
                         id="email" 
-                        placeholder="Unesite mail"
+                        placeholder="Unesite email"
                         value = {email}
                         onChange = { e => onChange(e) }
                     />
@@ -43,7 +43,7 @@ const Login = () => {
                         onChange = { e => onChange(e) }
                     />
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Prijava</button>
             </form>
             <br></br>
             <h6>Nemate profil? Registrirajte se <Link to = '/register'>ovdje</Link>.</h6>
