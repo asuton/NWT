@@ -21,7 +21,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav ml-auto">
+          <Link className={styles.link} to="/dashboard">
+            <div className={styles.button}>Dashboard</div>
+          </Link>
           <a className={styles.link} onClick={logout} href="/">
+            {/* <a className={styles.link} onClick={logout} href="/dashboard"> */}
             <div className={styles.button}>Logout</div>
           </a>
         </div>

@@ -4,6 +4,8 @@ import "./App.css";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
+import Dashboard from "./components/dashboard/Dashboard";
+import PrivateRoute from "./components/routing/PrivateRoute";
 //Redux
 //sve komponente omotat providerom kako bi sve imale pristup stateovima
 import { Provider } from "react-redux";
@@ -31,6 +33,12 @@ const App = () => {
             <Switch>
               <Route exact path="/" component={Landing}></Route>
               <Route exact path="/register" component={Register}></Route>
+              {/* koristiti PrivateRoute za one stranice koje samo logirani korinsik vidi */}
+              <PrivateRoute
+                exact
+                path="/dashboard"
+                component={Dashboard}
+              ></PrivateRoute>
             </Switch>
           </section>
         </Fragment>
