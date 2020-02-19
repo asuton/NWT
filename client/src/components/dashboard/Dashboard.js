@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
+import DashboardActions from "./DashboardActions";
 import { getCurrentProfile } from "../../actions/profile";
+import Alert from "../layout/Alert";
 //zeli pozvati getCurrentProfile cim se ovo ucita,
 //buduci da se za to koriste hooks treba importat use effect
 
@@ -21,12 +23,15 @@ const Dashboard = ({
     <Spinner />
   ) : (
     <Fragment>
+      <Alert></Alert>
       <h1 className="large text-primary">Dashboard</h1>
       <p className="lead">
         <i className="fas fa-user" /> Welcome {user && user.name}
       </p>
       {profile !== null ? (
-        <Fragment>has</Fragment>
+        <Fragment>
+          <DashboardActions />
+        </Fragment>
       ) : (
         <Fragment>
           <p>Niste još postavili profil, molimo Vas dodajte Vaše informacije</p>

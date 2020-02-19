@@ -5,6 +5,8 @@ import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Dashboard from "./components/dashboard/Dashboard";
+import CreateProfile from "./components/profile-forms/CreateProfile";
+import EditProfile from "./components/profile-forms/EditProfile";
 import PrivateRoute from "./components/routing/PrivateRoute";
 //Redux
 //sve komponente omotat providerom kako bi sve imale pristup stateovima
@@ -38,6 +40,16 @@ const App = () => {
                 exact
                 path="/dashboard"
                 component={Dashboard}
+              ></PrivateRoute>
+              <PrivateRoute
+                exact
+                path="/create-profile"
+                component={CreateProfile}
+              ></PrivateRoute>
+              <PrivateRoute
+                exact
+                path="/edit-profile"
+                component={EditProfile}
               ></PrivateRoute>
             </Switch>
           </section>
