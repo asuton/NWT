@@ -9,3 +9,61 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.text{
+  padding-left: 10x !important;
+  padding-right: 10px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userIcon{
+  display: initial;
+  color: #007bff!important;
+}
+
+.icon{
+  float: left;
+}
+
+.social{
+  margin-left: 45px;
+}
+
+/*ODI PODCRTAJE WEBKIT BACKGROUND CLIP AL RADI SVEJEDNO*/
+.instagram{
+  background: -webkit-radial-gradient(33% 100% circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+  background: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media only screen and (max-width: 2000px){
+  .container{
+      width: 50%!important;
+  }
+}
+
+@media only screen and (max-width: 1075px){
+  .container{
+      width: 60%!important;
+  }
+}
+
+
+@media only screen and (max-width: 600px){
+  .container{
+      width: 80%!important;
+  }
+}
+
+@media only screen and (max-width: 475px){
+  .container{
+      width: 95%!important;
+  }
+  .userIcon{
+    display: none!important;
+  }
+}

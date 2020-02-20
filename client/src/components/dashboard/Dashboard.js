@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import DashboardActions from "./DashboardActions";
 import { getCurrentProfile } from "../../actions/profile";
-import Alert from "../layout/Alert";
+import Wrapper from "../layout/Wrapper";
 //zeli pozvati getCurrentProfile cim se ovo ucita,
 //buduci da se za to koriste hooks treba importat use effect
 
@@ -22,11 +22,10 @@ const Dashboard = ({
   return loading && profile === null ? (
     <Spinner />
   ) : (
-    <Fragment>
-      <Alert></Alert>
+    <Wrapper>
       <h1 className="large text-primary">Dashboard</h1>
       <p className="lead">
-        <i className="fas fa-user" /> Welcome {user && user.name}
+        <i className="fas fa-user" style = {{color: "#007bff"}} /> Welcome {user && user.name}
       </p>
       {profile !== null ? (
         <Fragment>
@@ -40,7 +39,7 @@ const Dashboard = ({
           </Link>
         </Fragment>
       )}
-    </Fragment>
+    </Wrapper>
   );
 };
 

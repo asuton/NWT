@@ -1,0 +1,17 @@
+.search{
+    border: solid;
+    border-width: 1px;
+    border-color: #6c757d;
+    outline: none;
+    padding-left: 3%;
+    border-radius: 8px;
+    width: 60%;
+    height: 45px;
+}
+.wrapper{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}

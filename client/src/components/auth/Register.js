@@ -1,11 +1,11 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import styles from "../../styles/auth.module.css";
 import PropTypes from "prop-types";
-import Alert from "../layout/Alert";
+import Wrapper from '../layout/Wrapper';
 
 //
 // Komponenta za registraciju, koristi alert komponentu
@@ -45,10 +45,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   }
 
   return (
-    <Fragment>
-      <Alert></Alert>
+    <Wrapper>
       <div className={`container ${styles.container}`}>
-        <h3>Registracija</h3>
+        <h3 style = {{color: "#007bff"}}>Registracija</h3>
         <br></br>
         <form onSubmit={e => onSubmit(e)}>
           <div className="form-group">
@@ -110,7 +109,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           Već ste registrirani? Prijavite se <Link to="/">ovdje</Link>.
         </h6>
       </div>
-    </Fragment>
+    </Wrapper>
   );
 };
 

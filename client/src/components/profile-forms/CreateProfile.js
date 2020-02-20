@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styles from "../../styles/CreateProfile.module.css";
 import { createProfile } from "../../actions/profile";
-import Alert from "../layout/Alert";
+import Wrapper from "../layout/Wrapper";
 
 const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
@@ -16,8 +16,7 @@ const CreateProfile = ({ createProfile, history }) => {
     twitter: "",
     facebook: "",
     youtube: "",
-    instagram: "",
-    date: ""
+    instagram: ""
   });
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
@@ -30,8 +29,7 @@ const CreateProfile = ({ createProfile, history }) => {
     twitter,
     facebook,
     youtube,
-    instagram,
-    date
+    instagram
   } = formData;
 
   const onChange = e =>
@@ -43,50 +41,57 @@ const CreateProfile = ({ createProfile, history }) => {
   };
 
   return (
-    <Fragment>
-      <Alert></Alert> <h1 className="large text-primary">Kreirajte profil</h1>
-      <p className="lead">
-        <i className="fas fa-user"></i>
-        Za bolji profil dodajte što više informacija
-      </p>
+    <Wrapper>
+      <div className = {`container ${styles.text}`}>
+        <h2 className="large text-primary">Kreirajte profil</h2>
+        <p className="lead">
+          <i className={`fas fa-user ${styles.userIcon}`}></i>
+          <span>{" "}Za bolji profil dodajte što više informacija</span>
+        </p>
+      </div> 
       <div className={`container ${styles.container}`}>
         <small>* obavezno ispuniti</small>
+        <br></br>
         <form className="form" onSubmit={e => onSubmit(e)}>
           <div className="form-group">
-            <small className="form-text">Unesite datum rođenja *</small>
+            <label htmlFor="InputAge">Unesite datum rođenja *</label>
             <input
               type="date"
+              className="form-control"
               name="age"
               value={age}
               onChange={e => onChange(e)}
             />
           </div>
           <div className="form-group">
-            <small className="form-text">Gdje živite? *</small>
+            <label htmlFor="InputLocation">Gdje živite? *</label>
             <input
               type="text"
-              placeholder="mjesto"
+              placeholder="Mjesto"
+              className="form-control"
               name="location"
               value={location}
               onChange={e => onChange(e)}
             />
           </div>
           <div className="form-group">
-            <small className="form-text">
-              Navedite interese npr. film, kultura, glazba
-            </small>
+            <label htmlFor="InputInterests">
+              Navedite interese npr. film, kultura, glazba...
+            </label>
             <input
               type="text"
-              placeholder="interesi"
+              placeholder="Interesi"
+              className="form-control"
               name="interests"
               value={interests}
               onChange={e => onChange(e)}
             />
           </div>
           <div className="form-group">
-            <small className="form-text">Recite nam malo o sebi</small>
+            <label htmlFor="InputBio">Recite nam malo o sebi</label>
             <textarea
-              placeholder="kratka biografija"
+              placeholder="Kratka biografija"
+              className="form-control"
               name="bio"
               value={bio}
               onChange={e => onChange(e)}
@@ -105,55 +110,70 @@ const CreateProfile = ({ createProfile, history }) => {
           {displaySocialInputs && (
             <Fragment>
               <div className="form-group social-input">
-                <i className="fab fa-twitter fa-2x"></i>
-                <input
-                  type="text"
-                  placeholder="Twitter URL"
-                  name="twitter"
-                  value={twitter}
-                  onChange={e => onChange(e)}
+                <i className={`fab fa-twitter fa-2x ${styles.icon}`}
+                  style = {{color: "cornflowerblue"}}></i>
+                <div className = {styles.social}>
+                  <input
+                    type="text"
+                    placeholder="Twitter URL"
+                    className="form-control"
+                    name="twitter"
+                    value={twitter}
+                    onChange={e => onChange(e)}
                 />
+                </div>
               </div>
               <div className="form-group social-input">
-                <i className="fab fa-facebook fa-2x"></i>
-                <input
-                  type="text"
-                  placeholder="Facebook URL"
-                  name="facebook"
-                  value={facebook}
-                  onChange={e => onChange(e)}
-                />
+                <i className={`fab fa-instagram fa-2x ${styles.icon} ${styles.instagram}`}></i>
+                <div className = {styles.social}>
+                  <input
+                    type="text"
+                    placeholder="Instagram URL"
+                    className="form-control"
+                    name="instagram"
+                    value={instagram}
+                    onChange={e => onChange(e)}
+                  />
+                </div>
               </div>
               <div className="form-group social-input">
-                <i className="fab fa-youtube fa-2x"></i>
-                <input
-                  type="text"
-                  placeholder="YouTube URL"
-                  name="youtube"
-                  value={youtube}
-                  onChange={e => onChange(e)}
-                />
+                <i className={`fab fa-facebook fa-2x ${styles.icon}`}
+                  style = {{color: "darkblue"}}></i>
+                <div className = {styles.social}>
+                  <input
+                    type="text"
+                    placeholder="Facebook URL"
+                    className="form-control"
+                    name="facebook"
+                    value={facebook}
+                    onChange={e => onChange(e)}
+                  />
+                </div>
               </div>
               <div className="form-group social-input">
-                <i className="fab fa-instagram fa-2x"></i>
-                <input
-                  type="text"
-                  placeholder="Instagram URL"
-                  name="instagram"
-                  value={instagram}
-                  onChange={e => onChange(e)}
-                />
+                <i className={`fab fa-youtube fa-2x ${styles.icon}`}
+                  style = {{color: "red"}}></i>
+                <div className = {styles.social}>
+                  <input
+                    type="text"
+                    placeholder="YouTube URL"
+                    className="form-control"
+                    name="youtube"
+                    value={youtube}
+                    onChange={e => onChange(e)}
+                  />
+                </div>
               </div>
             </Fragment>
           )}
 
-          <input type="submit" className="btn btn-primary my-1" />
-          <Link className="btn btn-light my-1" to="/dashboard">
+          <button type="submit" className="btn btn-primary">Pošalji</button>
+          <Link className="btn btn-light ml-3" to="/dashboard">
             Natrag
           </Link>
         </form>
       </div>
-    </Fragment>
+    </Wrapper>
   );
 };
 

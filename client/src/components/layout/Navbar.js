@@ -24,10 +24,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <Link className={styles.link} to="/dashboard">
             <div className={styles.button}>Dashboard</div>
           </Link>
-          <a className={styles.link} onClick={logout} href="/">
+          <Link className={styles.link} to="/profiles">
+            <div className={styles.button}>Korisnici</div>
+          </Link>
+          <Link className={styles.link} onClick={logout} to="/">
             {/* <a className={styles.link} onClick={logout} href="/dashboard"> */}
             <div className={styles.button}>Logout</div>
-          </a>
+          </Link>
         </div>
       </div>
     </Fragment>
@@ -64,10 +67,10 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <Link className={`${styles.link} ${styles.font}`} to="/">
           <div className={styles.button}>Event App</div>
         </Link>
-      </div>
-      {!loading && (
+        {!loading && (
         <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
       )}
+      </div>
     </nav>
   );
 };
