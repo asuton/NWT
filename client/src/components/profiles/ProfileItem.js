@@ -13,12 +13,12 @@ const ProfileItem = ({
     return (      
         <div className = "container">
             <div className = {`${styles.cardRow} row`}>
-                <div className="col-8 m-3">
+                <div className="col-10 m-2">
                     <div className={`card ${styles.card}`}>
                         <div className="card-body">
                             <div className="row">
                                 <div className="col-12 col-lg-4 col-md-6 text-center">
-                                    <img src={Slika} alt="" style = {{maxWidth: "200px"}} className="mx-auto rounded-circle img-fluid"/>
+                                    <img src={Slika} alt="" style = {{maxHeight: "200px"}} className="mx-auto rounded-circle img-fluid"/>
                                 </div>
                                 <div className={`col-12 col-lg-8 col-md-6 ${styles.info}`}>
                                     <h2 className="mt-2 mb-1 text-truncated">{name}</h2>
@@ -26,7 +26,7 @@ const ProfileItem = ({
                                         <i className={`fas fa-map-marker-alt ${styles.marker}`}></i>
                                         <p className="lead">{location}</p>
                                     </div>
-                                    <p>{bio && <span>{bio}</span>}</p>
+                                    <p className = {styles.bio}>{bio && <span>{bio}</span>}</p>
                                     <Link to = {`/profile/${_id}`}><button className = "btn btn-primary">Više</button></Link>
                                 </div>
                             </div>

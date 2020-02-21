@@ -1,4 +1,4 @@
-import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE, GET_PROFILES } from "../actions/types";
+import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE, GET_PROFILES, GET_PROFILE_SUCCESS, GET_PROFILES_SUCCESS } from "../actions/types";
 
 const initialState = {
   // profile kad smo logirani radi sve zahtjeve,
@@ -7,7 +7,8 @@ const initialState = {
   profile: null,
   // profiles za stranicu koja izlistava sve profile
   profiles: [],
-  loading: true,
+  loading: false,
+  loaded: false,
   error: {}
 };
 
@@ -21,17 +22,26 @@ export default function(state = initialState, action) {
         profile: payload,
         loading: false
       };
+    case GET_PROFILES_SUCCESS:
+    case GET_PROFILE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        loaded: true
+      };
     case GET_PROFILES:
       return {
         ...state,
         profiles: payload,
-        loading: false
+        loading: true,
+        loaded: false
       };
     case PROFILE_ERROR:
       return {
         ...state,
         error: payload,
-        loading: false
+        loading: false,
+        loaded: false
         //profile: null
       };
     case CLEAR_PROFILE:

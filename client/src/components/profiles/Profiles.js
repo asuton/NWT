@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProfiles } from '../../actions/profile';
@@ -6,7 +6,7 @@ import ProfileItem from './ProfileItem';
 import Spinner from '../layout/Spinner';
 import styles from '../../styles/profiles.module.css'
 
-const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
+const Profiles = ({ getProfiles, profile: { profiles, loading, loaded } }) => {
     useEffect(() => {
       getProfiles();
     }, [getProfiles]);
@@ -27,13 +27,10 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
     };    
 
 
-
+    if (loading) return <Spinner/>;
+    if (!loaded || !profiles ) return <Spinner/>;
     return (
-        <Fragment>
-          {loading ? (
-            <Spinner />
-          ) : (
-            <div class = "container">
+            <div className = "container">
                 <div style = {{width: "100%"}}>
                     <h1 className='large text-primary' style = {{textAlign: "center"}}>Korisnici</h1>
                     <div className = {styles.wrapper}>
@@ -50,8 +47,6 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
                     )}
                 </div>
             </div> 
-          )}
-        </Fragment>
       );
 };
 

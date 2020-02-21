@@ -19,6 +19,13 @@
 }
 
 .card{
-    -webkit-box-shadow: 0 10px 20px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 7px 15px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 7px 15px 0 rgba(0,0,0,0.3);
+}
+
+.bio{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 450px;
 }

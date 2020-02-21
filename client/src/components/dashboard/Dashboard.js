@@ -12,16 +12,17 @@ import Wrapper from "../layout/Wrapper";
 const Dashboard = ({
   getCurrentProfile,
   auth: { user },
-  profile: { profile, loading }
+  profile: { profile, loading, loaded }
 }) => {
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
 
   //ako je profile null i jos uvijek se loada zelimo prikazati spinner
-  return loading && profile === null ? (
-    <Spinner />
-  ) : (
+
+  if (loading) return <Spinner/>;
+  if (!loaded || !profile ) return <Spinner/>;
+  return (
     <Wrapper>
       <h1 className="large text-primary">Dashboard</h1>
       <p className="lead">

@@ -8,7 +8,7 @@ import { createProfile, getCurrentProfile } from "../../actions/profile";
 import Wrapper from "../layout/Wrapper";
 
 const EditProfile = ({ 
-  profile: { profile, loading }, 
+  profile: { profile, loaded, loading }, 
   createProfile, 
   getCurrentProfile, 
   history 

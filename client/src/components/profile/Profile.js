@@ -1,12 +1,15 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getProfileById } from '../../actions/profile';
 import { Link } from 'react-router-dom';
-import styles from '../../styles/profile.module.css';
 import Social from './Social';
-import Slika from '../../images/preuzmi.png';
+import Interests from './Interests';
+import Bio from './Bio';
+import About from './About';
+import styles from '../../styles/profileInfo.module.css';
+import Events from './Events';
 
 const Profile = ({ getProfileById, match, profile: { profile, loading }, auth }) => {
     useEffect(() => {
@@ -14,36 +17,39 @@ const Profile = ({ getProfileById, match, profile: { profile, loading }, auth })
     }, [getProfileById, match.params.id]);
     return (
         <div className = "container">
-            <div class="row">
-            { profile === null || loading ? <Spinner></Spinner> : 
-                <div className = "container">
-                    <div className = {styles.wrapper}>
-                        <div>
-                            <h2 style = {{marginBottom: "20px", marginTop: "20px"}}>{profile.user.name}</h2>
-                            <Link to = '/profiles'>
-                                <button className = "btn btn-primary" style = {{marginRight: "10px"}}>Natrag na profile</button>
-                            </Link>
-                            {auth.isAuthenticated && auth.loading === false && 
-                                auth.user._id === profile.user._id && 
-                                (<Link to = '/edit-profile'>
-                                    <button className = "btn btn-light">Uredi profil</button>
-                                </Link>)}
-                        </div>
-                        <div>
-                            <img src={Slika} alt="" style = {{maxWidth: "150px"}} className="mx-auto rounded-circle img-fluid"/>
-                        </div>
-                    </div>
-                    <hr></hr>
-                    <div class = "row">
-                    <Social profile = {profile}></Social>
-                    <div className = "col-lg-9 col-md-8 col-sm-12">
-                        bio
-                        </div>
-                    </div>
+            <div className = "row">
+            { profile === null || loading ? <Spinner></Spinner> :
+                <Fragment>
                     <div className = "container">
-                            
+                        <Link to = '/profiles'>
+                            <button className = "btn btn-primary" style = {{marginRight: "10px", paddingBottom: "5px"}}>
+                                Natrag na profile</button>
+                        </Link>
+                        {auth.isAuthenticated && auth.loading === false && 
+                            auth.user._id === profile.user._id && 
+                            (<Link to = '/edit-profile'>
+                                <button className = "btn btn-light">Uredi profil</button>
+                            </Link>)}
                     </div>
-                </div>
+                    <div className = {`container ${styles.container}`}>
+                        <div className = "row">
+                            <About profile = { profile }></About>
+                        </div>
+                        <hr></hr>
+                        <div className = "row">
+                            <Social profile = { profile }></Social>
+                        </div>
+                        <div className = "row">
+                            <Interests profile = { profile }></Interests>
+                        </div>
+                        <div className = "row">
+                            <Bio profile = { profile }></Bio>
+                        </div>
+                        <div className="row">
+                            <Events></Events>
+                        </div>
+                    </div>
+                </Fragment>
             }</div>
         </div>
     )

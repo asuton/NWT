@@ -1,0 +1,70 @@
+.social{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    border: solid;
+    border-width: 1px;
+    border-radius: 0.25rem;
+    border-color: darkgray;
+    padding: 50px!important;
+    -webkit-box-shadow: 0 15px 30px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 15px 30px 0 rgba(0,0,0,0.3);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+/*ODI PODCRTAJE WEBKIT BACKGROUND CLIP AL RADI SVEJEDNO*/
+.instagram{
+    background: -webkit-radial-gradient(33% 100% circle, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+    background: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.icon{
+    margin: 10px;
+    transition: transform 1s;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.wrapper{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.avatar{
+    max-height: 150px;
+}
+
+@media only screen and (max-width: 2000px){
+    .avatar{
+        max-height: 150px;
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .avatar{
+        max-height: 100px;
+    }
+}
+
+.eventCard{
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-color: #dee2e6 #dee2e6 #dee2e6;
+}
