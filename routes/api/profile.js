@@ -143,7 +143,7 @@ router.get("/user/:user_id", async (req, res) => {
 });
 
 //@route POST api/profile/avatar
-//@desc upload avatar for profile
+//@desc spremanje linka slike na ucitane na cloudinaryju
 //@access private
 
 router.post('/avatar', auth, async (req, res) => {
@@ -154,8 +154,8 @@ router.post('/avatar', auth, async (req, res) => {
     await profile.save();
     return res.json(profile);
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server error');
+      console.error(err.message);
+      res.status(500).send('Server error');
   }
 });
 

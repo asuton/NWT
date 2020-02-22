@@ -21,7 +21,7 @@ const ProfileSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    default: ''
+    default: 'https://res.cloudinary.com/dggse3lsx/image/upload/v1582408095/avatar/default_ft9ben.png'
   },
   social: {
     youtube: {

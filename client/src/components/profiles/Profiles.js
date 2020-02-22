@@ -28,7 +28,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading, loaded } }) => {
 
 
     if (loading) return <Spinner/>;
-    if (!loaded || !profiles ) return <Spinner/>;
+    //if (!loaded || !profiles ) return <Spinner/>;
     return (
             <div className = "container">
                 <div style = {{width: "100%"}}>

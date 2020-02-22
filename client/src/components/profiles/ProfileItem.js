@@ -8,7 +8,8 @@ const ProfileItem = ({
     profile: {
         user: {_id, name, avatar },
         bio,
-        location
+        location,
+        image
 }}) => {
     return (      
         <div className = "container">
@@ -18,7 +19,8 @@ const ProfileItem = ({
                         <div className="card-body">
                             <div className="row">
                                 <div className="col-12 col-lg-4 col-md-6 text-center">
-                                    <img src={Slika} alt="" style = {{maxHeight: "200px"}} className="mx-auto rounded-circle img-fluid"/>
+                                {image ? (<img src={image} alt="" style = {{maxHeight: "200px"}} className="mx-auto rounded-circle img-fluid"/>) : 
+                                    <img src={Slika} alt="" style = {{maxHeight: "200px"}} className="mx-auto rounded-circle img-fluid"/>}
                                 </div>
                                 <div className={`col-12 col-lg-8 col-md-6 ${styles.info}`}>
                                     <h2 className="mt-2 mb-1 text-truncated">{name}</h2>
