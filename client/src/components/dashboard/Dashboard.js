@@ -21,7 +21,7 @@ const Dashboard = ({
   //ako je profile null i jos uvijek se loada zelimo prikazati spinner
 
   if (loading) return <Spinner/>;
-  if (!loaded || !profile ) return <Spinner/>;
+  //if (!loaded || !profile ) return <Spinner/>;
   return (
     <Wrapper>
       <h1 className="large text-primary">Dashboard</h1>

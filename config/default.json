@@ -1,4 +1,7 @@
 {
     "mongoURI": "mongodb+srv://NWT:Naprednewebtehnologije@nwt-xvgct.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "secrettoken"
+    "jwtSecret": "secrettoken",
+    "cloud_name": "dggse3lsx",
+    "api_key": "565463177957574",
+    "api_secret": "L31Oa_yv-7Pi9rSz88Ld-HYqAqM"
 }

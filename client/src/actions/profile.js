@@ -6,7 +6,8 @@ import {
   CLEAR_PROFILE, 
   GET_PROFILES,
   GET_PROFILE_SUCCESS,
-  GET_PROFILES_SUCCESS
+  GET_PROFILES_SUCCESS,
+  UPDATE_PROFILE
 } from "./types";
 
 // Get current users profile
@@ -45,7 +46,7 @@ export const createProfile = (
         "Content-Type": "application/json"
       }
     };
-
+    
     const res = await axios.post("/api/profile", formData, config);
 
     dispatch({
@@ -110,6 +111,40 @@ export const getProfileById = userId => async dispatch => {
     dispatch({ type: GET_PROFILE_SUCCESS});
 
   } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+export const uploadAvatar = (image, history) => async dispatch => {
+  try {
+   
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    let imageJSON = {
+      image
+    }
+    const res = await axios.post("/api/profile/avatar", imageJSON, config);
+    
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Profilna slika ažurirana', 'success'));
+
+    history.push('/dashboard');
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+    }
     dispatch({
       type: PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }

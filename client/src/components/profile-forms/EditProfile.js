@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import styles from "../../styles/CreateProfile.module.css";
 import { createProfile, getCurrentProfile } from "../../actions/profile";
 import Wrapper from "../layout/Wrapper";
+import ImageUpload from "./ImageUpload";
 
 const EditProfile = ({ 
   profile: { profile, loaded, loading }, 
@@ -192,6 +193,7 @@ const EditProfile = ({
           </Link>
         </form>
       </div>
+      <ImageUpload></ImageUpload>
     </Wrapper>
   );
 };

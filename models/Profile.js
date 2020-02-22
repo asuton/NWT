@@ -19,6 +19,10 @@ const ProfileSchema = new mongoose.Schema({
   interests: {
     type: [String]
   },
+  image: {
+    type: String,
+    default: ''
+  },
   social: {
     youtube: {
       type: String

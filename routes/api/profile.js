@@ -142,4 +142,22 @@ router.get("/user/:user_id", async (req, res) => {
   }
 });
 
+//@route POST api/profile/avatar
+//@desc upload avatar for profile
+//@access private
+
+router.post('/avatar', auth, async (req, res) => {
+  try {
+    let profile = await Profile.findOne({ user: req.user.id });
+    const { image } = req.body;
+    profile.image = image;
+    await profile.save();
+    return res.json(profile);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+
 module.exports = router;
