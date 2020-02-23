@@ -12,6 +12,7 @@ import PrivateRoute from "./components/routing/PrivateRoute";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
 import Events from "./components/events/Events";
+import Event from "./components/event/Event";
 //Redux
 //sve komponente omotat providerom kako bi sve imale pristup stateovima
 import { Provider } from "react-redux";
@@ -76,6 +77,11 @@ const App = () => {
                 exact
                 path="/events"
                 component={Events}
+              ></PrivateRoute>
+              <PrivateRoute
+                exact
+                path="/events/:id"
+                component={Event}
               ></PrivateRoute>
             </Switch>
           </div>

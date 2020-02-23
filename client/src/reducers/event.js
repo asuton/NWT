@@ -3,7 +3,10 @@ import {
   EVENT_ERROR,
   UPDATE_LIKES,
   DELETE_EVENT,
-  ADD_EVENT
+  ADD_EVENT,
+  GET_EVENT,
+  ADD_COMMENT,
+  REMOVE_COMMENT
 } from "../actions/types";
 
 const initialState = {
@@ -21,6 +24,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         events: payload,
+        loading: false
+      };
+    case GET_EVENT:
+      return {
+        ...state,
+        event: payload,
         loading: false
       };
     case ADD_EVENT:
@@ -49,6 +58,23 @@ export default function(state = initialState, action) {
         events: state.events.map(event =>
           event._id === payload.id ? { ...event, likes: payload.likes } : event
         ),
+        loading: false
+      };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        event: { ...state.event, comments: payload },
+        loading: false
+      };
+    case REMOVE_COMMENT:
+      return {
+        ...state,
+        event: {
+          ...state.event,
+          comments: state.event.comments.filter(
+            comment => comment._id !== payload
+          )
+        },
         loading: false
       };
     default:

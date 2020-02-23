@@ -5,7 +5,10 @@ import {
   EVENT_ERROR,
   UPDATE_LIKES,
   DELETE_EVENT,
-  ADD_EVENT
+  ADD_EVENT,
+  GET_EVENT,
+  ADD_COMMENT,
+  REMOVE_COMMENT
 } from "./types";
 
 // Get events
@@ -97,6 +100,71 @@ export const addEvent = formData => async dispatch => {
     });
 
     dispatch(setAlert("Event created", "success"));
+  } catch (err) {
+    dispatch({
+      type: EVENT_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Get event
+export const getEvent = id => async dispatch => {
+  try {
+    const res = await axios.get(`/api/events/${id}`);
+
+    dispatch({
+      type: GET_EVENT,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: EVENT_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Add comment
+export const addComment = (eventId, formData) => async dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  try {
+    const res = await axios.post(
+      `/api/events/comment/${eventId}`,
+      formData,
+      config
+    );
+
+    dispatch({
+      type: ADD_COMMENT,
+      payload: res.data
+    });
+
+    dispatch(setAlert("Comment Added", "success"));
+  } catch (err) {
+    dispatch({
+      type: EVENT_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Delete comment
+export const deleteComment = (eventId, commentId) => async dispatch => {
+  try {
+    await axios.delete(`/api/events/comment/${eventId}/${commentId}`);
+
+    dispatch({
+      type: REMOVE_COMMENT,
+      payload: commentId
+    });
+
+    dispatch(setAlert("Comment Removed", "success"));
   } catch (err) {
     dispatch({
       type: EVENT_ERROR,
