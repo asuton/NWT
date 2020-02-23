@@ -21,6 +21,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav ml-auto">
+          <Link className={styles.link} to="/events">
+            <div className={styles.button}>Events</div>
+          </Link>
           <Link className={styles.link} to="/dashboard">
             <div className={styles.button}>Dashboard</div>
           </Link>
@@ -68,8 +71,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
           <div className={styles.button}>Event App</div>
         </Link>
         {!loading && (
-        <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
-      )}
+          <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+        )}
       </div>
     </nav>
   );
