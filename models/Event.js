@@ -16,16 +16,16 @@ const EventSchema = new Schema({
   },
   name: {
     type: String,
-    //required: true
+    required: true
   },
   // nadodano lokacija
   location: {
     type: String,
-    //required: true
+    required: true
   },
   eventDate: {
     type: Date,
-    //required: true
+    required: true
   },
   category: {
     type: String

@@ -1,0 +1,30 @@
+.cardRow{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.card{
+    -webkit-box-shadow: 0 7px 15px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 7px 15px 0 rgba(0,0,0,0.3);
+}
+
+.cardBody{
+    border-top: 1px solid rgba(0,0,0,.125);
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.create{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
