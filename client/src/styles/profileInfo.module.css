@@ -45,18 +45,21 @@
 }
 
 .avatar{
-    max-height: 150px;
+    height: 150px!important;
+    width: 150px!important;
 }
 
 @media only screen and (max-width: 2000px){
     .avatar{
-        max-height: 150px;
+        height: 150px!important;
+        width: 150px!important;
     }
 }
 
 @media only screen and (max-width: 700px){
     .avatar{
-        max-height: 100px;
+        height: 100px!important;
+        width: 100px!important;
     }
 }
 

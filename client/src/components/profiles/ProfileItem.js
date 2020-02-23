@@ -6,7 +6,7 @@ import styles from '../../styles/profileItem.module.css';
 
 const ProfileItem = ({ 
     profile: {
-        user: {_id, name, avatar },
+        user: {_id, name },
         bio,
         location,
         image
@@ -19,7 +19,7 @@ const ProfileItem = ({
                         <div className="card-body">
                             <div className="row">
                                 <div className="col-12 col-lg-4 col-md-6 text-center">
-                                {image ? (<img src={image} alt="" style = {{maxHeight: "200px"}} className="mx-auto rounded-circle img-fluid"/>) : 
+                                {image ? (<img src={image} alt="" style = {{height: "200px", width: "200px"}} className="mx-auto rounded-circle img-fluid"/>) : 
                                     <img src={Slika} alt="" style = {{maxHeight: "200px"}} className="mx-auto rounded-circle img-fluid"/>}
                                 </div>
                                 <div className={`col-12 col-lg-8 col-md-6 ${styles.info}`}>

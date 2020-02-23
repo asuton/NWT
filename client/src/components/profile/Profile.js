@@ -22,14 +22,17 @@ const Profile = ({ getProfileById, match, profile: { profile, loading }, auth })
                 <Fragment>
                     <div className = "container">
                         <Link to = '/profiles'>
-                            <button className = "btn btn-primary" style = {{marginRight: "10px", paddingBottom: "5px"}}>
+                            <button className = "btn btn-primary" style = {{marginRight: "10px", marginBottom: "10px"}}>
                                 Natrag na profile</button>
                         </Link>
                         {auth.isAuthenticated && auth.loading === false && 
                             auth.user._id === profile.user._id && 
-                            (<Link to = '/edit-profile'>
-                                <button className = "btn btn-light">Uredi profil</button>
-                            </Link>)}
+                            (<Fragment>
+                                <Link to = '/edit-profile'>
+                                    <button className = "btn btn-light" style = {{marginRight: "10px", marginBottom: "10px"}}>Uredi profil</button>
+                                </Link> 
+                                <Link to="/edit-profile-picture" className="btn btn-light" style = {{marginBottom: "10px"}}>Uredi sliku profila</Link> 
+                            </Fragment>)}
                     </div>
                     <div className = {`container ${styles.container}`}>
                         <div className = "row">

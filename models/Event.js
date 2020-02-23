@@ -11,11 +11,29 @@ const EventSchema = new Schema({
     type: String,
     required: true
   },
-  name: {
+  title: {
     type: String
+  },
+  name: {
+    type: String,
+    //required: true
   },
   // nadodano lokacija
   location: {
+    type: String,
+    //required: true
+  },
+  eventDate: {
+    type: Date,
+    //required: true
+  },
+  category: {
+    type: String
+  },
+  eventImg: {
+    type: String
+  },
+  profileImg: {
     type: String
   },
   // za like i unlike, ne dislike vec ukloniti like

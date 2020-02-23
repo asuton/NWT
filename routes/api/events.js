@@ -32,13 +32,18 @@ router.post(
     // Trebamo dohvatiti usera
     try {
       const user = await User.findById(req.user.id).select("-password");
-
+      const profile = await Profile.findOne({ user: req.user.id });
       const newEvent = new Event({
         text: req.body.text,
         name: user.name,
         user: req.user.id,
         location: req.body.location,
-        date: req.body.date
+        date: req.body.date,
+        profileImg: profile.image,
+        category: req.body.category,
+        eventImg: req.body.eventImg,
+        eventDate: req.body.eventDate,
+        title: req.body.title
       });
 
       const event = await newEvent.save();
