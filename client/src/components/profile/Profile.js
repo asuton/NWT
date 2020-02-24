@@ -27,7 +27,7 @@ const Profile = ({ getProfileById, match, getEvents, profile: { profile, loading
                     <div className = "container">
                         <Link to = '/profiles'>
                             <button className = "btn btn-primary" style = {{marginRight: "10px", marginBottom: "10px"}}>
-                                Natrag na profile</button>
+                                Natrag</button>
                         </Link>
                         {auth.isAuthenticated && auth.loading === false && 
                             auth.user._id === profile.user._id && 

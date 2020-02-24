@@ -67,3 +67,11 @@
     display: none!important;
   }
 }
+.wrapper{
+  /*height: 1000vh;*/
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

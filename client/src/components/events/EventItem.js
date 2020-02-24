@@ -60,7 +60,7 @@ const EventItem = ({
                 <h5 className="mb-0">{name}</h5>
               </Link>
               <p className="mb-0">
-                Objavljeno: <Moment format="HH:MM DD.MM.YYYY.">{date}</Moment>
+                Objavljeno: <span style ={{display: "inline-block"}}><Moment format="HH:mm DD.MM.YYYY.">{date}</Moment></span>
               </p>
             </div>
           </div>
@@ -71,24 +71,24 @@ const EventItem = ({
                 alt=""
                 src={eventImg}
               />
-            ) : (
-              <img
-                className={`card-img ${styles.image}`}
-                alt=""
-                src={profileImg}
-              />
+            ) : (<p></p>
+              // <img
+              //   className={`card-img ${styles.image}`}
+              //   alt=""
+              //   src={profileImg}
+              // />
             )}
           </div>
           <div className={`card-body ${styles.cardBody}`}>
             <Link to={`/events/${_id}`}>
-              <h4>{title ? title : "Događaj"}</h4>
+              <h4>{title}</h4>
             </Link>
             <p className = "lead">{category}</p>
             <p>Mjesto: {location}</p>
             <p>
               Vrijeme:{" "}
               <Moment format="HH:MM DD.MM.YYYY.">
-                {eventDate ? eventDate : date}
+                {eventDate}
               </Moment>
             </p>
           </div>
@@ -104,7 +104,7 @@ const EventItem = ({
                     type="button"
                     className="btn btn-light"
                   >
-                    <i className="fas fa-thumbs-up"></i>
+                    <i className="fas fa-thumbs-up"></i>{' '}
                     <span>
                       {likes.length > 0 && <span>{likes.length}</span>}
                     </span>

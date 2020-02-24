@@ -52,6 +52,14 @@ const EventForm = ({ addEvent }) => {
         eventData.eventImg = "https://res.cloudinary.com/dggse3lsx/image/upload/v1582542432/events/zabava_1_rtqzcj.jpg";
     }
     addEvent(eventData);
+    setEventData({
+      text: '',
+      title: '',
+      location: '',
+      eventDate: '',
+      category: '',
+      eventImg: ''
+    });
   };
 
   return (
@@ -81,9 +89,9 @@ const EventForm = ({ addEvent }) => {
               onChange={e => onChange(e)}
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label hmtlFor="InputCategory">Kategorija *</label>
-            <select class="form-control" 
+            <select className="form-control" 
               name="category"
               value={category}
               onChange={e => onChange(e)}

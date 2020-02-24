@@ -20,7 +20,9 @@ const ProfileItem = ({
                             <div className="row">
                                 <div className="col-12 col-lg-4 col-md-6 text-center">
                                 {image ? (<img src={image} alt="" style = {{height: "200px", width: "200px"}} className="mx-auto rounded-circle img-fluid"/>) : 
-                                    <img src={Slika} alt="" style = {{maxHeight: "200px"}} className="mx-auto rounded-circle img-fluid"/>}
+                                    //<img src={Slika} alt="" style = {{maxHeight: "200px"}} className="mx-auto rounded-circle img-fluid"/>
+                                    (<p></p>)
+                                }
                                 </div>
                                 <div className={`col-12 col-lg-8 col-md-6 ${styles.info}`}>
                                     <h2 className="mt-2 mb-1 text-truncated">{name}</h2>

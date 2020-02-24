@@ -12,11 +12,7 @@ const DashboardEvents = ({ getEvents, auth, event: {events} }) => {
     }, [getEvents]);
     let today = new Date().toISOString().slice(0, 10);
 
-    //
-    //PROMINIT EVENT.DATE U EVENT.EVENTDATE ISTO DOLI U EVENTACARDU!!!!!!!!!!
-    //
-
-    let filteredUserEvents = events.filter(event => event.user === auth.user._id && event.date.slice(0,10) === today)
+    let filteredUserEvents = events.filter(event => event.user === auth.user._id && event.eventDate.slice(0,10) === today)
 
     let filteredGoingEvents = events.filter(event => {
         if(event.date.slice(0,10) === today){
@@ -35,7 +31,7 @@ const DashboardEvents = ({ getEvents, auth, event: {events} }) => {
                     <div className = "col-lg-5 col-md-5 col-sm-10">
                         <h5 style = {{textAlign: "center"}}>Danas održavate: </h5>
                         {filteredUserEvents.length > 0 ? (filteredUserEvents.map(event => (
-                            <EventCard title = {event.title} date = {event.date} id = {event._id} key = {event._id}></EventCard>
+                            <EventCard title = {event.title} date = {event.eventDate} id = {event._id} key = {event._id}></EventCard>
                         ))):(<p className = "lead" style = {{textAlign: "center"}}>Danas ne održavate događaje</p>)}
                     </div>
                 }

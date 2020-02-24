@@ -6,7 +6,7 @@ const ProfileSchema = new mongoose.Schema({
     ref: "user"
   },
   age: {
-    type: String,
+    type: Date,
     required: true
   },
   location: {

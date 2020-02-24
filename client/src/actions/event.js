@@ -9,7 +9,9 @@ import {
   ADD_EVENT,
   GET_EVENT,
   ADD_COMMENT,
-  REMOVE_COMMENT
+  REMOVE_COMMENT,
+  CLEAR_EVENT,
+  DELETE_EVENT2
 } from "./types";
 
 // Get events
@@ -21,6 +23,7 @@ export const getEvents = () => async dispatch => {
       type: GET_EVENTS,
       payload: res.data
     });
+    dispatch({ type: CLEAR_EVENT });
   } catch (err) {
     dispatch({
       type: EVENT_ERROR,
@@ -110,6 +113,25 @@ export const deleteEvent = id => async dispatch => {
     });
 
     dispatch(setAlert("Event removed", "success"));
+  } catch (err) {
+    dispatch({
+      type: EVENT_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+export const deleteEvent2 = (id, history) => async dispatch => {
+  try {
+    await axios.delete(`/api/events/${id}`);
+
+    dispatch({
+      type: DELETE_EVENT2,
+      payload: id
+    });
+
+    dispatch(setAlert("Event removed", "success"));
+    history.push('/events');
   } catch (err) {
     dispatch({
       type: EVENT_ERROR,

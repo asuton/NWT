@@ -11,7 +11,6 @@ const Events = ({profile, events}) => {
             else return false;
         }
     });
-    console.log(filteredGoingEvents);
     return (
         <div className="col-12">
             <label>Događaji</label>
@@ -28,7 +27,7 @@ const Events = ({profile, events}) => {
                 </div>
                 <div className={`tab-content ${styles.eventCard}`} id="myTabContent">
                     <div className="tab-pane fade show active p-3" id="one">
-                        {filteredUserEvents.length > 0 ? (filteredUserEvents.map(event => (
+                        {filteredUserEvents.length > 0 ? (filteredUserEvents.sort((a, b) => (a.eventDate > b.eventDate) ? -1 : 1).map(event => (
                             <EventCard 
                                 title = {event.title} 
                                 date = {event.eventDate} 
@@ -38,7 +37,7 @@ const Events = ({profile, events}) => {
                         ))) : (<p className = "lead">Korisnik nema vlastitih događaja</p>)}           
                     </div>
                     <div className="tab-pane fade p-3" id="two">
-                        {filteredGoingEvents.length > 0 ? (filteredGoingEvents.map(event => (
+                        {filteredGoingEvents.length > 0 ? (filteredGoingEvents.sort((a, b) => (a.eventDate > b.eventDate) ? -1 : 1).map(event => (
                             <EventGoingCard 
                                 title = {event.title} 
                                 date = {event.eventDate} 

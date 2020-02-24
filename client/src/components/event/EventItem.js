@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { connect } from "react-redux";
 // importamo connect jer ima puno akcija (add like, remove like, delete event)
-import Slika from "../../images/preuzmi.png";
-import { addLike, removeLike, deleteEvent } from "../../actions/event";
+//import Slika from "../../images/preuzmi.png";
 import { getProfiles } from "../../actions/profile";
 import styles from "../../styles/eventItem.module.css";
 import Spinner from "../layout/Spinner";
@@ -54,13 +53,13 @@ const EventItem = ({
                     style={{ height: "75px", width: "75px" }}
                     className="mx-auto rounded-circle img-fluid"
                   />
-                ) : (
-                  <img
-                    src={Slika}
-                    alt=""
-                    style={{ height: "75px", width: "75px" }}
-                    className="mx-auto rounded-circle img-fluid"
-                  />
+                ) : (<p></p>
+                  // <img
+                  //   src={Slika}
+                  //   alt=""
+                  //   style={{ height: "75px", width: "75px" }}
+                  //   className="mx-auto rounded-circle img-fluid"
+                  // />
                 )}
               </figure>
               <div>
@@ -68,7 +67,7 @@ const EventItem = ({
                   <h5 className="mb-0">{name}</h5>
                 </Link>
                 <p className="mb-0">
-                  Objavljeno: <Moment format="HH:MM DD.MM.YYYY.">{date}</Moment>
+                  Objavljeno: <span style ={{display: "inline-block"}}><Moment format="HH:MM DD.MM.YYYY.">{date}</Moment></span>
                 </p>
               </div>
             </div>
@@ -79,17 +78,17 @@ const EventItem = ({
                   alt=""
                   src={eventImg}
                 />
-              ) : (
-                <img
-                  className={`card-img ${styles.image}`}
-                  alt=""
-                  src={profileImg}
-                />
+              ) : (<p></p>
+                // <img
+                //   className={`card-img ${styles.image}`}
+                //   alt=""
+                //   src={profileImg}
+                // />
               )}
             </div>
             <div className={`card-body ${styles.cardBody}`}>
               <Link to={`/events/${_id}`}>
-                <h4>{title ? title : "Događaj"}</h4>
+                <h4>{title}</h4>
               </Link>
               <p className="card-text" style = {{whiteSpace: "break-spaces"}}>{text}</p>
               <hr></hr>
@@ -98,7 +97,7 @@ const EventItem = ({
               <p>
                 Vrijeme:{" "}
                 <Moment format="HH:MM DD.MM.YYYY.">
-                  {eventDate ? eventDate : date}
+                  {eventDate}
                 </Moment>
               </p>
             </div>
@@ -132,7 +131,6 @@ EventItem.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth,
   profile: state.profile
 });
 

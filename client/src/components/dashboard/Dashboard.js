@@ -21,7 +21,7 @@ const Dashboard = ({
 
   //ako je profile null i jos uvijek se loada zelimo prikazati spinner
 
-  return ( !loading && profile !== null ? (
+  return ( !loading ? (
     <Fragment>
       <div className = {styles.title}>
         <h1 className="large text-primary">Dashboard</h1>
@@ -40,7 +40,7 @@ const Dashboard = ({
         </Fragment>
       ) : (
         <Fragment>
-          <p>Niste još postavili profil, molimo Vas dodajte Vaše informacije</p>
+          <p className = "mx-2"style = {{textAlign: "center"}}>Niste još postavili profil, molimo Vas dodajte Vaše informacije</p>
           <Link to="/create-profile" className="btn btn-primary my-1">
             Kreiraj profil
           </Link>

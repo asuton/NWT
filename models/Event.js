@@ -15,20 +15,21 @@ const EventSchema = new Schema({
     type: String
   },
   name: {
-    type: String
-    //required: true
+    type: String,
+    required: true
   },
   // nadodano lokacija
   location: {
-    type: String
-    // required: true
+    type: String,
+    required: true
   },
   eventDate: {
-    type: Date
-    //required: true
+    type: Date,
+    required: true
   },
   category: {
-    type: String
+    type: String,
+    required: true
   },
   eventImg: {
     type: String

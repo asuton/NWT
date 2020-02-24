@@ -60,9 +60,9 @@ const EditProfile = ({
   };
 
   return (
-    <Wrapper>
+    <div className={styles.wrapper}>
       <div className = {`container ${styles.text}`}>
-        <h2 className="large text-primary">Kreirajte profil</h2>
+        <h2 className="large text-primary">Uredite profil</h2>
         <p className="lead">
           <i className={`fas fa-user ${styles.userIcon}`}></i>
           <span>{" "}Za bolji profil dodajte što više informacija</span>
@@ -192,7 +192,7 @@ const EditProfile = ({
           </Link>
         </form>
       </div>
-    </Wrapper>
+    </div>
   );
 };
 

@@ -41,7 +41,7 @@ const CreateProfile = ({ createProfile, history }) => {
   };
 
   return (
-    <Wrapper>
+    <div className = {styles.wrapper}>
       <div className = {`container ${styles.text}`}>
         <h2 className="large text-primary">Kreirajte profil</h2>
         <p className="lead">
@@ -173,7 +173,7 @@ const CreateProfile = ({ createProfile, history }) => {
           </Link>
         </form>
       </div>
-    </Wrapper>
+    </div>
   );
 };
 

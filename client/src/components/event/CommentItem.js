@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import Moment from "react-moment";
 import { deleteComment } from "../../actions/event";
 import styles from "../../styles/comment.module.css";
-import Slika from "../../images/preuzmi.png"
+//import Slika from "../../images/preuzmi.png"
 
 const CommentItem = ({
   eventId,
@@ -24,13 +24,13 @@ const CommentItem = ({
                   style={{ height: "75px", width: "75px" }}
                   className="mx-auto rounded-circle img-fluid"
                 />
-              ) : (
-                <img
-                  src={Slika}
-                  alt=""
-                  style={{ height: "75px", width: "75px" }}
-                  className="mx-auto rounded-circle img-fluid"
-                />
+              ) : (<p></p>
+                // <img
+                //   src={Slika}
+                //   alt=""
+                //   style={{ height: "75px", width: "75px" }}
+                //   className="mx-auto rounded-circle img-fluid"
+                // />
               )}
             </figure>
       <Link to={`/profile/${user}`}>

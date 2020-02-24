@@ -7,7 +7,9 @@ import {
   ADD_EVENT,
   GET_EVENT,
   ADD_COMMENT,
-  REMOVE_COMMENT
+  REMOVE_COMMENT, 
+  CLEAR_EVENT,
+  DELETE_EVENT2
 } from "../actions/types";
 
 const initialState = {
@@ -41,6 +43,13 @@ export default function(state = initialState, action) {
         loading: false
       };
     case DELETE_EVENT:
+      return {
+        ...state,
+        // pomocu filtera vracamo sve eventove osim izbrisanog
+        events: state.events.filter(event => event._id !== payload),
+        loading: false
+      };
+    case DELETE_EVENT2:
       return {
         ...state,
         // pomocu filtera vracamo sve eventove osim izbrisanog
@@ -84,6 +93,12 @@ export default function(state = initialState, action) {
         },
         loading: false
       };
+    case CLEAR_EVENT:
+			return {
+				...state,
+				event: null,
+				loading: false
+			};
     default:
       return state;
   }

@@ -21,3 +21,5 @@ export const ADD_EVENT = "ADD_EVENT";
 export const ADD_COMMENT = "ADD_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
 export const UPDATE_LIKES2 = "UPDATE_LIKES2";
+export const CLEAR_EVENT = "CLEAR_EVENT";
+export const DELETE_EVENT2 = "DELETE_EVENT2";
