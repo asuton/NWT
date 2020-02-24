@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
-import EventItem from "../events/EventItem";
+import EventItem from "./EventItem";
 import CommentForm from "../event/CommentForm";
 import CommentItem from "../event/CommentItem";
 import { getEvent } from "../../actions/event";
@@ -27,7 +27,7 @@ const Event = ({ getEvent, event: { event, loading }, match }) => {
         </button>
       </Link>
       <div className={`container ${styles.eventContainer}`}>
-        <EventItem event={event} showActions={false} />
+        <EventItem event = {event} showActions={true}/>
       </div>
 
       <div className="container">

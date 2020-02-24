@@ -31,18 +31,18 @@ const DashboardEvents = ({ getEvents, auth, event: {events} }) => {
     return ( !events.loading ? 
         (<div className = "container">
             <div className = "row">
-                { events === null || events.loading ? <Spinner></Spinner> :
+                { events.loading || events === null ? <Spinner></Spinner> :
                     <div className = "col-lg-5 col-md-5 col-sm-10">
-                        <h5>Danas održavate: </h5>
+                        <h5 style = {{textAlign: "center"}}>Danas održavate: </h5>
                         {filteredUserEvents.length > 0 ? (filteredUserEvents.map(event => (
                             <EventCard title = {event.title} date = {event.date} id = {event._id} key = {event._id}></EventCard>
-                        ))):(<p className = "lead">Danas ne održavate događaje</p>)}
+                        ))):(<p className = "lead" style = {{textAlign: "center"}}>Danas ne održavate događaje</p>)}
                     </div>
                 }
                 <div className ="col-lg-2 col-md-2 col-sm-0"></div> 
-                { events === null || events.loading ? <Spinner></Spinner> :
+                { events.loading || events === null ? <Spinner></Spinner> :
                      <div className ="col-lg-5 col-md-5 col-sm-10">
-                        <h5>Danas idete na: </h5>
+                        <h5 style = {{textAlign: "center"}}>Danas idete na: </h5>
                         {filteredGoingEvents.length > 0 ? (filteredGoingEvents.map(event => (
                             <EventGoingCard 
                                 title = {event.title} 
@@ -53,7 +53,7 @@ const DashboardEvents = ({ getEvents, auth, event: {events} }) => {
                                 key = {event._id}
                             >
                             </EventGoingCard>
-                        ))):(<p className = "lead">Danas ne idete na događaje</p>)}
+                        ))):(<p className = "lead" style = {{textAlign: "center"}}>Danas ne idete na događaje</p>)}
                     </div>
                 }
             </div>

@@ -60,24 +60,22 @@ const EventItem = ({
                 <h5 className="mb-0">{name}</h5>
               </Link>
               <p className="mb-0">
-                Objavljeno: <Moment format="DD.MM.YYYY.">{date}</Moment>
+                Objavljeno: <Moment format="HH:MM DD.MM.YYYY.">{date}</Moment>
               </p>
             </div>
           </div>
-          <div className="mb-0" style={{ position: "relative" }}>
+          <div className="mb-0" style={{ position: "relative", overflow: "hidden"}}>
             {eventImg ? (
               <img
-                className="card-img"
+                className={`card-img ${styles.image}`}
                 alt=""
                 src={eventImg}
-                style={{ height: "250px", width: "100%" }}
               />
             ) : (
               <img
-                className="card-img"
+                className={`card-img ${styles.image}`}
                 alt=""
                 src={profileImg}
-                style={{ height: "250px", width: "100%" }}
               />
             )}
           </div>
@@ -85,13 +83,11 @@ const EventItem = ({
             <Link to={`/events/${_id}`}>
               <h4>{title ? title : "Događaj"}</h4>
             </Link>
-            <p className="card-text">{text}</p>
-            <hr></hr>
-            <p>{category}</p>
+            <p className = "lead">{category}</p>
             <p>Mjesto: {location}</p>
             <p>
-              Datum:{" "}
-              <Moment format="DD.MM.YYYY.">
+              Vrijeme:{" "}
+              <Moment format="HH:MM DD.MM.YYYY.">
                 {eventDate ? eventDate : date}
               </Moment>
             </p>

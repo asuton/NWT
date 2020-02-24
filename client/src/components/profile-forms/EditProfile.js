@@ -1,6 +1,6 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, Fragment, useEffect} from "react";
 //each input is a piece of state pa trebaju state hooks tj useState
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styles from "../../styles/CreateProfile.module.css";
@@ -8,7 +8,7 @@ import { createProfile, getCurrentProfile } from "../../actions/profile";
 import Wrapper from "../layout/Wrapper";
 
 const EditProfile = ({ 
-  profile: { profile, loaded, loading }, 
+  profile: { profile, loading }, 
   createProfile, 
   getCurrentProfile, 
   history 
@@ -25,9 +25,9 @@ const EditProfile = ({
   });
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
-
   useEffect(() => {
     getCurrentProfile();
+    
     setFormData({
       age: loading || !profile.age ? '' : profile.age,
       location: loading || !profile.location ? '' : profile.location,

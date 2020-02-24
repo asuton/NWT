@@ -5,8 +5,6 @@ import {
   PROFILE_ERROR, 
   CLEAR_PROFILE, 
   GET_PROFILES,
-  GET_PROFILE_SUCCESS,
-  GET_PROFILES_SUCCESS,
   UPDATE_PROFILE
 } from "./types";
 
@@ -18,8 +16,6 @@ export const getCurrentProfile = () => async dispatch => {
       type: GET_PROFILE,
       payload: res.data
     });
-
-    dispatch({ type: GET_PROFILE_SUCCESS});
 
   } catch (err) {
     dispatch({ type: CLEAR_PROFILE });
@@ -87,8 +83,6 @@ export const getProfiles = () => async dispatch => {
       payload: res.data
     });
 
-    dispatch({ type: GET_PROFILES_SUCCESS });
-
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
@@ -107,8 +101,6 @@ export const getProfileById = userId => async dispatch => {
       type: GET_PROFILE,
       payload: res.data
     });
-
-    dispatch({ type: GET_PROFILE_SUCCESS});
 
   } catch (err) {
     dispatch({

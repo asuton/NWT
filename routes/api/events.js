@@ -132,8 +132,7 @@ router.put("/like/:id", auth, async (req, res) => {
 
     // Check if the event has already been liked by this user
     if (
-      event.likes.filter(like => like.user.toString() === req.user.id).length >
-      0
+      event.likes.filter(like => like.user.toString() === req.user.id).length > 0
     ) {
       return res.status(400).json({ msg: "Event already liked" });
     }
@@ -205,12 +204,14 @@ router.post(
 
     try {
       const user = await User.findById(req.user.id).select("-password");
+      const profile = await Profile.findOne({user: req.user.id});
       const event = await Event.findById(req.params.id);
 
       const newComment = {
         text: req.body.text,
         name: user.name,
-        user: req.user.id
+        user: req.user.id,
+        profileImg: profile.image
       };
 
       event.comments.unshift(newComment);

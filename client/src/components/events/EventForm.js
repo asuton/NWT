@@ -28,30 +28,29 @@ const EventForm = ({ addEvent }) => {
     e.preventDefault();
     switch(category){
       case "Zabava":
-        eventData.eventImg = "https://res.cloudinary.com/dggse3lsx/image/upload/v1582481035/events/zabava_atrd8u.jpg";
+        eventData.eventImg = "https://res.cloudinary.com/dggse3lsx/image/upload/v1582542432/events/zabava_1_rtqzcj.jpg";
         break;
       case "Kultura":
-        eventData.eventImg = "https://res.cloudinary.com/dggse3lsx/image/upload/v1582481005/events/kultura_msdfhy.jpg";
+        eventData.eventImg = "https://res.cloudinary.com/dggse3lsx/image/upload/v1582542432/events/kultura_2_u1fpve.jpg";
         break;
       case "Sport":
-        eventData.eventImg = "https://res.cloudinary.com/dggse3lsx/image/upload/v1582481113/events/sport_zvo8pr.jpg";
+        eventData.eventImg = "https://res.cloudinary.com/dggse3lsx/image/upload/v1582542432/events/sport_1_cdrfnj.jpg";
         break;
       case "Obrazovanje":
-        eventData.eventImg = "https://res.cloudinary.com/dggse3lsx/image/upload/v1582481005/events/obrazovanje_b3ufy9.png";
+        eventData.eventImg = "https://res.cloudinary.com/dggse3lsx/image/upload/v1582541042/events/obrazovanje_1_ogt3k5.jpg";
         break;
       case "Glazba":
-        eventData.eventImg = "https://res.cloudinary.com/dggse3lsx/image/upload/v1582481026/events/glazba_tty168.jpg";
+        eventData.eventImg = "https://res.cloudinary.com/dggse3lsx/image/upload/v1582542432/events/glazba_1_tdv05l.jpg";
         break;
       case "Film":
-        eventData.eventImg = "https://res.cloudinary.com/dggse3lsx/image/upload/v1582481607/events/film_bqrmv7.jpg";
+        eventData.eventImg = "https://res.cloudinary.com/dggse3lsx/image/upload/v1582542432/events/film_2_zndeha.jpg";
         break;
       case "Ostalo":
         eventData.eventImg = "https://res.cloudinary.com/dggse3lsx/image/upload/v1582481272/events/ostalo_nnd3sm.jpg";
         break;
       default:
-        eventData.eventImg = "";
+        eventData.eventImg = "https://res.cloudinary.com/dggse3lsx/image/upload/v1582542432/events/zabava_1_rtqzcj.jpg";
     }
-
     addEvent(eventData);
   };
 

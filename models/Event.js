@@ -63,6 +63,9 @@ const EventSchema = new Schema({
       //   avatar: {
       //     type: String
       //   },
+      profileImg: {
+        type: String
+      },
       date: {
         type: Date,
         default: Date.now

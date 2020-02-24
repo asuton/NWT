@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProfiles } from '../../actions/profile';
@@ -6,7 +6,7 @@ import ProfileItem from './ProfileItem';
 import Spinner from '../layout/Spinner';
 import styles from '../../styles/profiles.module.css'
 
-const Profiles = ({ getProfiles, profile: { profiles, loading, loaded } }) => {
+const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
     useEffect(() => {
       getProfiles();
     }, [getProfiles]);
@@ -26,10 +26,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading, loaded } }) => {
         });
     };    
 
-
-    if (loading) return <Spinner/>;
-    //if (!loaded || !profiles ) return <Spinner/>;
-    return (
+    return ( !loading && profiles !== null ? (
             <div className = "container">
                 <div style = {{width: "100%"}}>
                     <h1 className='large text-primary' style = {{textAlign: "center"}}>Korisnici</h1>
@@ -43,10 +40,10 @@ const Profiles = ({ getProfiles, profile: { profiles, loading, loaded } }) => {
                         <ProfileItem key={profile._id} profile={profile} />
                     ))
                     ) : (
-                    <h4 style = {{textAlign: "center"}}>Nema registriranih korisnika</h4>
+                        <Spinner></Spinner>
                     )}
                 </div>
-            </div> 
+            </div> ) : (<Spinner></Spinner>)
       );
 };
 
