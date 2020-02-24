@@ -4,6 +4,7 @@ import {
   GET_EVENTS,
   EVENT_ERROR,
   UPDATE_LIKES,
+  UPDATE_LIKES2,
   DELETE_EVENT,
   ADD_EVENT,
   GET_EVENT,
@@ -55,6 +56,40 @@ export const removeLike = id => async dispatch => {
     dispatch({
       type: UPDATE_LIKES,
       payload: { id, likes: res.data }
+    });
+  } catch (err) {
+    dispatch({
+      type: EVENT_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Add like 2
+export const addLike2 = id => async dispatch => {
+  try {
+    const res = await axios.put(`/api/events/like/${id}`);
+
+    dispatch({
+      type: UPDATE_LIKES2,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: EVENT_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+//Remove like 2
+export const removeLike2 = id => async dispatch => {
+  try {
+    const res = await axios.put(`/api/events/unlike/${id}`);
+
+    dispatch({
+      type: UPDATE_LIKES2,
+      payload: res.data
     });
   } catch (err) {
     dispatch({

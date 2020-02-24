@@ -8,8 +8,15 @@ import CommentForm from "../event/CommentForm";
 import CommentItem from "../event/CommentItem";
 import { getEvent } from "../../actions/event";
 import styles from "../../styles/comment.module.css";
+import { addLike2, removeLike2 } from "../../actions/event";
 
-const Event = ({ getEvent, event: { event, loading }, match }) => {
+const Event = ({
+  getEvent,
+  addLike2,
+  removeLike2,
+  event: { event, loading },
+  match
+}) => {
   useEffect(() => {
     getEvent(match.params.id);
   }, [getEvent, match.params.id]);
@@ -26,8 +33,29 @@ const Event = ({ getEvent, event: { event, loading }, match }) => {
           Natrag na događaje
         </button>
       </Link>
+
+      <div>
+        <button
+          onClick={() => addLike2(event._id)}
+          type="button"
+          className="btn btn-light"
+        >
+          <i className="fas fa-thumbs-up"></i>
+          <span>
+            {event.likes.length > 0 && <span>{event.likes.length}</span>}
+          </span>
+        </button>
+        <button
+          onClick={() => removeLike2(event._id)}
+          type="button"
+          className="btn btn-light"
+        >
+          <i className="fas fa-thumbs-down"></i>
+        </button>
+      </div>
+
       <div className={`container ${styles.eventContainer}`}>
-        <EventItem event = {event} showActions={true}/>
+        <EventItem event={event} showActions={true} />
       </div>
 
       <div className="container">
@@ -47,11 +75,15 @@ const Event = ({ getEvent, event: { event, loading }, match }) => {
 
 Event.propTypes = {
   getEvent: PropTypes.func.isRequired,
-  event: PropTypes.object.isRequired
+  event: PropTypes.object.isRequired,
+  addLike2: PropTypes.func.isRequired,
+  removeLike2: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   event: state.event
 });
 
-export default connect(mapStateToProps, { getEvent })(Event);
+export default connect(mapStateToProps, { getEvent, addLike2, removeLike2 })(
+  Event
+);

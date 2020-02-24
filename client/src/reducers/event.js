@@ -2,6 +2,7 @@ import {
   GET_EVENTS,
   EVENT_ERROR,
   UPDATE_LIKES,
+  UPDATE_LIKES2,
   DELETE_EVENT,
   ADD_EVENT,
   GET_EVENT,
@@ -58,6 +59,12 @@ export default function(state = initialState, action) {
         events: state.events.map(event =>
           event._id === payload.id ? { ...event, likes: payload.likes } : event
         ),
+        loading: false
+      };
+    case UPDATE_LIKES2:
+      return {
+        ...state,
+        event: { ...state.event, likes: payload },
         loading: false
       };
     case ADD_COMMENT:
