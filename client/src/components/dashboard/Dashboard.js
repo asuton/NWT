@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import DashboardActions from "./DashboardActions";
 import { getCurrentProfile } from "../../actions/profile";
-import Wrapper from "../layout/Wrapper";
+import DashboardEvents from "./DashboardEvents";
+import styles from '../../styles/dashboard.module.css';
 //zeli pozvati getCurrentProfile cim se ovo ucita,
 //buduci da se za to koriste hooks treba importat use effect
 
@@ -20,18 +21,22 @@ const Dashboard = ({
 
   //ako je profile null i jos uvijek se loada zelimo prikazati spinner
 
-  if (loading) return <Spinner />;
-  //if (!loaded || !profile ) return <Spinner/>;
-  return (
-    <Wrapper>
-      <h1 className="large text-primary">Dashboard</h1>
-      <p className="lead">
-        <i className="fas fa-user" style={{ color: "#007bff" }} /> Welcome{" "}
-        {user && user.name}
-      </p>
+  return ( !loading && profile !== null ? (
+    <Fragment>
+      <div className = {styles.title}>
+        <h1 className="large text-primary">Dashboard</h1>
+        <p className="lead">
+          <i className="fas fa-user" style = {{color: "#007bff"}} /> Welcome {user && user.name}
+        </p>
+      </div>
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
+          <br></br>
+          <hr></hr>
+          <div className = "container">
+            <DashboardEvents></DashboardEvents>
+          </div>
         </Fragment>
       ) : (
         <Fragment>
@@ -41,7 +46,7 @@ const Dashboard = ({
           </Link>
         </Fragment>
       )}
-    </Wrapper>
+    </Fragment>) : (<Spinner></Spinner>)
   );
 };
 

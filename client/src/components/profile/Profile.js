@@ -10,13 +10,17 @@ import Bio from './Bio';
 import About from './About';
 import styles from '../../styles/profileInfo.module.css';
 import Events from './Events';
+import {getEvents} from '../../actions/event';
 
-const Profile = ({ getProfileById, match, profile: { profile, loading }, auth }) => {
+const Profile = ({ getProfileById, match, getEvents, profile: { profile, loading }, auth, event: {events} }) => {
     useEffect(() => {
         getProfileById(match.params.id);
-    }, [getProfileById, match.params.id]);
-    return (
-        <div className = "container">
+        getEvents();
+    }, [getProfileById, match.params.id, getEvents]);
+
+    
+    return ( loading || profile ? 
+        (<div className = "container">
             <div className = "row">
             { profile === null || loading ? <Spinner></Spinner> :
                 <Fragment>
@@ -49,24 +53,26 @@ const Profile = ({ getProfileById, match, profile: { profile, loading }, auth })
                             <Bio profile = { profile }></Bio>
                         </div>
                         <div className="row">
-                            <Events></Events>
+                            <Events events = {events} profile = {profile}></Events>
                         </div>
                     </div>
                 </Fragment>
             }</div>
         </div>
-    )
+    ) : (<Spinner></Spinner>))
 }
 
 Profile.propTypes = {
     getProfileById: PropTypes.func.isRequired,
     profile: PropTypes.object.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    getEvents: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
     profile: state.profile,
-    auth: state.auth
+    auth: state.auth,
+    event: state.event
 })
 
-export default connect(mapStateToProps, { getProfileById })(Profile);
+export default connect(mapStateToProps, { getProfileById, getEvents })(Profile);
