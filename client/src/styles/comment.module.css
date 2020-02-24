@@ -1,0 +1,43 @@
+.eventContainer {
+  padding: 0 !important;
+  margin-bottom: 20px !important;
+}
+
+.commentItem {
+  border: solid;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.userX {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date {
+  color: grey;
+}
+
+.text {
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  padding: 10px;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.formContainer {
+  border: solid;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  padding-right: 15px !important;
+  padding-left: 15px !important;
+}

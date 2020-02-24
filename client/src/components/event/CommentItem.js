@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Moment from "react-moment";
 import { deleteComment } from "../../actions/event";
+import styles from "../../styles/comment.module.css";
 
 const CommentItem = ({
   eventId,
@@ -11,18 +12,11 @@ const CommentItem = ({
   auth,
   deleteComment
 }) => (
-  <div className="post bg-white p-1 my-1">
-    <div>
+  <div className={`container ${styles.commentItem}`}>
+    <div className={styles.userX}>
       <Link to={`/profile/${user}`}>
-        {/* <img className="round-img" src={avatar} alt="" /> */}
         <h4>{name}</h4>
       </Link>
-    </div>
-    <div>
-      <p className="my-1">{text}</p>
-      <p className="post-date">
-        Komentirano <Moment format="DD. MM. YYYY.">{date}</Moment>
-      </p>
       {!auth.loading && user === auth.user._id && (
         <button
           onClick={() => deleteComment(eventId, _id)}
@@ -32,6 +26,12 @@ const CommentItem = ({
           <i className="fas fa-times" />
         </button>
       )}
+    </div>
+    <div>
+      <p className={styles.text}>{text}</p>
+      <small className={styles.date}>
+        Komentirano <Moment format="DD. MM. YYYY.">{date}</Moment>
+      </small>
     </div>
   </div>
 );

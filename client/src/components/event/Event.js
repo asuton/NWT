@@ -7,6 +7,7 @@ import EventItem from "../events/EventItem";
 import CommentForm from "../event/CommentForm";
 import CommentItem from "../event/CommentItem";
 import { getEvent } from "../../actions/event";
+import styles from "../../styles/comment.module.css";
 
 const Event = ({ getEvent, event: { event, loading }, match }) => {
   useEffect(() => {
@@ -25,9 +26,11 @@ const Event = ({ getEvent, event: { event, loading }, match }) => {
           Natrag na događaje
         </button>
       </Link>
-      <EventItem event={event} showActions={false} />
+      <div className={`container ${styles.eventContainer}`}>
+        <EventItem event={event} showActions={false} />
+      </div>
 
-      <div>
+      <div className="container">
         {event.comments.map(comment => (
           <CommentItem
             key={comment._id}

@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addComment } from "../../actions/event";
-import styles from "../../styles/createEvent.module.css";
+import styles from "../../styles/comment.module.css";
 
 const CommentForm = ({ eventId, addComment }) => {
   const [text, setText] = useState("");
 
   return (
-    <div className={`container ${styles.container}`}>
-      {/* <p>Komentirajte događaj</p> */}
-
+    <div className={`container ${styles.formContainer}`}>
       <form
         className="form"
         onSubmit={e => {
