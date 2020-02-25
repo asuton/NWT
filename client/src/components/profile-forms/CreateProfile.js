@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styles from "../../styles/CreateProfile.module.css";
 import { createProfile } from "../../actions/profile";
-import Wrapper from "../layout/Wrapper";
 
 const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
@@ -41,14 +40,14 @@ const CreateProfile = ({ createProfile, history }) => {
   };
 
   return (
-    <div className = {styles.wrapper}>
-      <div className = {`container ${styles.text}`}>
+    <div className={styles.wrapper}>
+      <div className={`container ${styles.text}`}>
         <h2 className="large text-primary">Kreirajte profil</h2>
         <p className="lead">
           <i className={`fas fa-user ${styles.userIcon}`}></i>
-          <span>{" "}Za bolji profil dodajte što više informacija</span>
+          <span> Za bolji profil dodajte što više informacija</span>
         </p>
-      </div> 
+      </div>
       <div className={`container ${styles.container}`}>
         <small>* obavezno ispuniti</small>
         <br></br>
@@ -110,9 +109,11 @@ const CreateProfile = ({ createProfile, history }) => {
           {displaySocialInputs && (
             <Fragment>
               <div className="form-group social-input">
-                <i className={`fab fa-twitter fa-2x ${styles.icon}`}
-                  style = {{color: "cornflowerblue"}}></i>
-                <div className = {styles.social}>
+                <i
+                  className={`fab fa-twitter fa-2x ${styles.icon}`}
+                  style={{ color: "cornflowerblue" }}
+                ></i>
+                <div className={styles.social}>
                   <input
                     type="text"
                     placeholder="Twitter URL"
@@ -120,12 +121,14 @@ const CreateProfile = ({ createProfile, history }) => {
                     name="twitter"
                     value={twitter}
                     onChange={e => onChange(e)}
-                />
+                  />
                 </div>
               </div>
               <div className="form-group social-input">
-                <i className={`fab fa-instagram fa-2x ${styles.icon} ${styles.instagram}`}></i>
-                <div className = {styles.social}>
+                <i
+                  className={`fab fa-instagram fa-2x ${styles.icon} ${styles.instagram}`}
+                ></i>
+                <div className={styles.social}>
                   <input
                     type="text"
                     placeholder="Instagram URL"
@@ -137,9 +140,11 @@ const CreateProfile = ({ createProfile, history }) => {
                 </div>
               </div>
               <div className="form-group social-input">
-                <i className={`fab fa-facebook fa-2x ${styles.icon}`}
-                  style = {{color: "darkblue"}}></i>
-                <div className = {styles.social}>
+                <i
+                  className={`fab fa-facebook fa-2x ${styles.icon}`}
+                  style={{ color: "darkblue" }}
+                ></i>
+                <div className={styles.social}>
                   <input
                     type="text"
                     placeholder="Facebook URL"
@@ -151,9 +156,11 @@ const CreateProfile = ({ createProfile, history }) => {
                 </div>
               </div>
               <div className="form-group social-input">
-                <i className={`fab fa-youtube fa-2x ${styles.icon}`}
-                  style = {{color: "red"}}></i>
-                <div className = {styles.social}>
+                <i
+                  className={`fab fa-youtube fa-2x ${styles.icon}`}
+                  style={{ color: "red" }}
+                ></i>
+                <div className={styles.social}>
                   <input
                     type="text"
                     placeholder="YouTube URL"
@@ -167,7 +174,9 @@ const CreateProfile = ({ createProfile, history }) => {
             </Fragment>
           )}
 
-          <button type="submit" className="btn btn-primary">Pošalji</button>
+          <button type="submit" className="btn btn-primary">
+            Pošalji
+          </button>
           <Link className="btn btn-light ml-3" to="/dashboard">
             Natrag
           </Link>

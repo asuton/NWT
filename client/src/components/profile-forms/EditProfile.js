@@ -1,17 +1,16 @@
-import React, { useState, Fragment, useEffect} from "react";
+import React, { useState, Fragment, useEffect } from "react";
 //each input is a piece of state pa trebaju state hooks tj useState
-import { Link, withRouter, Redirect } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styles from "../../styles/CreateProfile.module.css";
 import { createProfile, getCurrentProfile } from "../../actions/profile";
-import Wrapper from "../layout/Wrapper";
 
-const EditProfile = ({ 
-  profile: { profile, loading }, 
-  createProfile, 
-  getCurrentProfile, 
-  history 
+const EditProfile = ({
+  profile: { profile, loading },
+  createProfile,
+  getCurrentProfile,
+  history
 }) => {
   const [formData, setFormData] = useState({
     age: "",
@@ -27,16 +26,17 @@ const EditProfile = ({
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
   useEffect(() => {
     getCurrentProfile();
-    
+
     setFormData({
-      age: loading || !profile.age ? '' : profile.age,
-      location: loading || !profile.location ? '' : profile.location,
-      bio: loading || !profile.bio ? '' : profile.bio,
-      interests: loading || !profile.interests ? '' : profile.interests.join(', '),
-      twitter: loading || !profile.social ? '' : profile.social.twitter,
-      facebook: loading || !profile.social ? '' : profile.social.facebook,
-      youtube: loading || !profile.social ? '' : profile.social.youtube,
-      instagram: loading || !profile.social ? '' : profile.social.instagram
+      age: loading || !profile.age ? "" : profile.age,
+      location: loading || !profile.location ? "" : profile.location,
+      bio: loading || !profile.bio ? "" : profile.bio,
+      interests:
+        loading || !profile.interests ? "" : profile.interests.join(", "),
+      twitter: loading || !profile.social ? "" : profile.social.twitter,
+      facebook: loading || !profile.social ? "" : profile.social.facebook,
+      youtube: loading || !profile.social ? "" : profile.social.youtube,
+      instagram: loading || !profile.social ? "" : profile.social.instagram
     });
   }, [loading, getCurrentProfile]);
 
@@ -61,13 +61,13 @@ const EditProfile = ({
 
   return (
     <div className={styles.wrapper}>
-      <div className = {`container ${styles.text}`}>
+      <div className={`container ${styles.text}`}>
         <h2 className="large text-primary">Uredite profil</h2>
         <p className="lead">
           <i className={`fas fa-user ${styles.userIcon}`}></i>
-          <span>{" "}Za bolji profil dodajte što više informacija</span>
+          <span> Za bolji profil dodajte što više informacija</span>
         </p>
-      </div> 
+      </div>
       <div className={`container ${styles.container}`}>
         <small>* obavezno ispuniti</small>
         <br></br>
@@ -129,9 +129,11 @@ const EditProfile = ({
           {displaySocialInputs && (
             <Fragment>
               <div className="form-group social-input">
-                <i className={`fab fa-twitter fa-2x ${styles.icon}`}
-                  style = {{color: "cornflowerblue"}}></i>
-                <div className = {styles.social}>
+                <i
+                  className={`fab fa-twitter fa-2x ${styles.icon}`}
+                  style={{ color: "cornflowerblue" }}
+                ></i>
+                <div className={styles.social}>
                   <input
                     type="text"
                     placeholder="Twitter URL"
@@ -139,12 +141,14 @@ const EditProfile = ({
                     name="twitter"
                     value={twitter}
                     onChange={e => onChange(e)}
-                />
+                  />
                 </div>
               </div>
               <div className="form-group social-input">
-                <i className={`fab fa-instagram fa-2x ${styles.icon} ${styles.instagram}`}></i>
-                <div className = {styles.social}>
+                <i
+                  className={`fab fa-instagram fa-2x ${styles.icon} ${styles.instagram}`}
+                ></i>
+                <div className={styles.social}>
                   <input
                     type="text"
                     placeholder="Instagram URL"
@@ -156,9 +160,11 @@ const EditProfile = ({
                 </div>
               </div>
               <div className="form-group social-input">
-                <i className={`fab fa-facebook fa-2x ${styles.icon}`}
-                  style = {{color: "darkblue"}}></i>
-                <div className = {styles.social}>
+                <i
+                  className={`fab fa-facebook fa-2x ${styles.icon}`}
+                  style={{ color: "darkblue" }}
+                ></i>
+                <div className={styles.social}>
                   <input
                     type="text"
                     placeholder="Facebook URL"
@@ -170,9 +176,11 @@ const EditProfile = ({
                 </div>
               </div>
               <div className="form-group social-input">
-                <i className={`fab fa-youtube fa-2x ${styles.icon}`}
-                  style = {{color: "red"}}></i>
-                <div className = {styles.social}>
+                <i
+                  className={`fab fa-youtube fa-2x ${styles.icon}`}
+                  style={{ color: "red" }}
+                ></i>
+                <div className={styles.social}>
                   <input
                     type="text"
                     placeholder="YouTube URL"
@@ -186,7 +194,9 @@ const EditProfile = ({
             </Fragment>
           )}
 
-          <button type="submit" className="btn btn-primary">Pošalji</button>
+          <button type="submit" className="btn btn-primary">
+            Pošalji
+          </button>
           <Link className="btn btn-light ml-3" to="/dashboard">
             Natrag
           </Link>
@@ -199,7 +209,7 @@ const EditProfile = ({
 EditProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -207,4 +217,6 @@ const mapStateToProps = state => ({
 });
 
 // withRouter dozvaljava da koristimo history object
-export default connect(mapStateToProps, { createProfile, getCurrentProfile })(withRouter(EditProfile));
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+  withRouter(EditProfile)
+);

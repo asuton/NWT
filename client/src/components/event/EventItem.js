@@ -32,11 +32,13 @@ const EventItem = ({
   }, [getProfiles]);
 
   let filteredGoingPeople = profiles.filter(osoba => {
-    for(let i = 0; i < likes.length; i++){
-        if(likes[i].user === osoba.user._id) return true;
+    for (let i = 0; i < likes.length; i++) {
+      if (likes[i].user === osoba.user._id) return true;
     }
   });
-  return( loading ? (<Spinner></Spinner>) : (
+  return loading ? (
+    <Spinner></Spinner>
+  ) : (
     <Fragment>
       <div className={`${styles.cardRow} row m-auto`}>
         <div className="col-12 m-1">
@@ -53,7 +55,8 @@ const EventItem = ({
                     style={{ height: "75px", width: "75px" }}
                     className="mx-auto rounded-circle img-fluid"
                   />
-                ) : (<p></p>
+                ) : (
+                  <p></p>
                   // <img
                   //   src={Slika}
                   //   alt=""
@@ -67,18 +70,25 @@ const EventItem = ({
                   <h5 className="mb-0">{name}</h5>
                 </Link>
                 <p className="mb-0">
-                  Objavljeno: <span style ={{display: "inline-block"}}><Moment format="HH:MM DD.MM.YYYY.">{date}</Moment></span>
+                  Objavljeno:{" "}
+                  <span style={{ display: "inline-block" }}>
+                    <Moment format="HH:mm DD.MM.YYYY.">{date}</Moment>
+                  </span>
                 </p>
               </div>
             </div>
-            <div className="mb-0" style={{ position: "relative", overflow: "hidden"}}>
+            <div
+              className="mb-0"
+              style={{ position: "relative", overflow: "hidden" }}
+            >
               {eventImg ? (
                 <img
                   className={`card-img ${styles.image}`}
                   alt=""
                   src={eventImg}
                 />
-              ) : (<p></p>
+              ) : (
+                <p></p>
                 // <img
                 //   className={`card-img ${styles.image}`}
                 //   alt=""
@@ -90,15 +100,14 @@ const EventItem = ({
               <Link to={`/events/${_id}`}>
                 <h4>{title}</h4>
               </Link>
-              <p className="card-text" style = {{whiteSpace: "break-spaces"}}>{text}</p>
+              <p className="card-text" style={{ whiteSpace: "break-spaces" }}>
+                {text}
+              </p>
               <hr></hr>
-              <p className = "lead">{category}</p>
+              <p className="lead">{category}</p>
               <p>Mjesto: {location}</p>
               <p>
-                Vrijeme:{" "}
-                <Moment format="HH:MM DD.MM.YYYY.">
-                  {eventDate}
-                </Moment>
+                Vrijeme: <Moment format="HH:mm DD.MM.YYYY.">{eventDate}</Moment>
               </p>
             </div>
             <div
@@ -106,11 +115,17 @@ const EventItem = ({
               style={{ backgroundColor: "rgba(148, 148, 148, 0.05)" }}
             >
               <div>
-                <p className = "lead">Idu: </p>
-                <div className = {styles.going}>
-                  {filteredGoingPeople.length > 0 ? (filteredGoingPeople.map(
-                    person => (<Link to={`/profile/${person.user._id}`}><p style = {{marginRight: "7px"}}>{person.user.name}</p></Link>)
-                  )) : (<p className = "lead">Još nitko ne ide na događaj</p>)}
+                <p className="lead">Idu: </p>
+                <div className={styles.going}>
+                  {filteredGoingPeople.length > 0 ? (
+                    filteredGoingPeople.map(person => (
+                      <Link to={`/profile/${person.user._id}`}>
+                        <p style={{ marginRight: "7px" }}>{person.user.name}</p>
+                      </Link>
+                    ))
+                  ) : (
+                    <p className="lead">Još nitko ne ide na događaj</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -118,7 +133,7 @@ const EventItem = ({
         </div>
       </div>
     </Fragment>
-  ));
+  );
 };
 
 EventItem.defaultProps = {
@@ -127,7 +142,7 @@ EventItem.defaultProps = {
 
 EventItem.propTypes = {
   event: PropTypes.object.isRequired,
-  getProfiles: PropTypes.func.isRequired,
+  getProfiles: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -135,6 +150,4 @@ const mapStateToProps = state => ({
 });
 
 // auth state kako bi se delete button prikazao samo onom korisniku ciji je to event
-export default connect(mapStateToProps, { getProfiles })(
-  EventItem
-);
+export default connect(mapStateToProps, { getProfiles })(EventItem);

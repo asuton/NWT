@@ -60,18 +60,25 @@ const EventItem = ({
                 <h5 className="mb-0">{name}</h5>
               </Link>
               <p className="mb-0">
-                Objavljeno: <span style ={{display: "inline-block"}}><Moment format="HH:mm DD.MM.YYYY.">{date}</Moment></span>
+                Objavljeno:{" "}
+                <span style={{ display: "inline-block" }}>
+                  <Moment format="HH:mm DD.MM.YYYY.">{date}</Moment>
+                </span>
               </p>
             </div>
           </div>
-          <div className="mb-0" style={{ position: "relative", overflow: "hidden"}}>
+          <div
+            className="mb-0"
+            style={{ position: "relative", overflow: "hidden" }}
+          >
             {eventImg ? (
               <img
                 className={`card-img ${styles.image}`}
                 alt=""
                 src={eventImg}
               />
-            ) : (<p></p>
+            ) : (
+              <p></p>
               // <img
               //   className={`card-img ${styles.image}`}
               //   alt=""
@@ -83,13 +90,10 @@ const EventItem = ({
             <Link to={`/events/${_id}`}>
               <h4>{title}</h4>
             </Link>
-            <p className = "lead">{category}</p>
+            <p className="lead">{category}</p>
             <p>Mjesto: {location}</p>
             <p>
-              Vrijeme:{" "}
-              <Moment format="HH:MM DD.MM.YYYY.">
-                {eventDate}
-              </Moment>
+              Vrijeme: <Moment format="HH:mm DD.MM.YYYY.">{eventDate}</Moment>
             </p>
           </div>
           <div
@@ -104,7 +108,7 @@ const EventItem = ({
                     type="button"
                     className="btn btn-light"
                   >
-                    <i className="fas fa-thumbs-up"></i>{' '}
+                    <i className="fas fa-thumbs-up"></i>{" "}
                     <span>
                       {likes.length > 0 && <span>{likes.length}</span>}
                     </span>
