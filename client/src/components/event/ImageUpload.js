@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { uploadCover } from '../../actions/event';
-import styles from '../../styles/upload.module.css';
 import Spinner from '../layout/Spinner';
 
 const UploadImages = ({ uploadCover, history, eventId }) => {
@@ -32,7 +31,7 @@ const UploadImages = ({ uploadCover, history, eventId }) => {
     return (
       <Fragment>
             <button
-              className='btn btn-outline-dark my-1'
+              className='btn btn-light my-1'
               onClick={() => {
                 myWidget.open();
               }}

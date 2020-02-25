@@ -249,7 +249,7 @@ export const uploadCover = (eventId, image, history) => async dispatch => {
 
     dispatch(setAlert('Slika događaja ažurirana', 'success'));
 
-    history.push('/events');
+    history.push(`/events/${eventId}`);
   } catch (err) {
     const errors = err.response.data.errors;
 

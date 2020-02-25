@@ -46,7 +46,7 @@
 
 @media only screen and (max-width: 750px){
     .image{
-        height: 250px;
+        height: 220px;
     }
     .search{
         width: 65%;
@@ -55,7 +55,7 @@
 
 @media only screen and (max-width: 475px){
     .image{
-        height: 200px;
+        height: 175px;
     }
     .search{
         width: 55%;
