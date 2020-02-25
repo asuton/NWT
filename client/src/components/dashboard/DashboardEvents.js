@@ -15,7 +15,7 @@ const DashboardEvents = ({ getEvents, auth, event: {events} }) => {
     let filteredUserEvents = events.filter(event => event.user === auth.user._id && event.eventDate.slice(0,10) === today)
 
     let filteredGoingEvents = events.filter(event => {
-        if(event.date.slice(0,10) === today){
+        if(event.eventDate.slice(0,10) === today){
             for(let i = 0; i < event.likes.length; i++){
                 if(event.likes[i].user === auth.user._id) return true;
                 else return false;
