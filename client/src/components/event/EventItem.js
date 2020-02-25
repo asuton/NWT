@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { connect } from "react-redux";
-// importamo connect jer ima puno akcija (add like, remove like, delete event)
-//import Slika from "../../images/preuzmi.png";
 import { getProfiles } from "../../actions/profile";
 import styles from "../../styles/eventItem.module.css";
 import Spinner from "../layout/Spinner";
@@ -55,15 +53,7 @@ const EventItem = ({
                     style={{ height: "75px", width: "75px" }}
                     className="mx-auto rounded-circle img-fluid"
                   />
-                ) : (
-                  <p></p>
-                  // <img
-                  //   src={Slika}
-                  //   alt=""
-                  //   style={{ height: "75px", width: "75px" }}
-                  //   className="mx-auto rounded-circle img-fluid"
-                  // />
-                )}
+                ) : (<p>Greška</p>)}
               </figure>
               <div>
                 <Link to={`/profile/${user}`}>
@@ -87,14 +77,7 @@ const EventItem = ({
                   alt=""
                   src={eventImg}
                 />
-              ) : (
-                <p></p>
-                // <img
-                //   className={`card-img ${styles.image}`}
-                //   alt=""
-                //   src={profileImg}
-                // />
-              )}
+              ) : (null)}
             </div>
             <div className={`card-body ${styles.cardBody}`}>
               <Link to={`/events/${_id}`}>
@@ -149,5 +132,4 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-// auth state kako bi se delete button prikazao samo onom korisniku ciji je to event
 export default connect(mapStateToProps, { getProfiles })(EventItem);

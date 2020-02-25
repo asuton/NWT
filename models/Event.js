@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const EventSchema = new Schema({
-  // Zelimo povezati event s korisnikom stoga imamo user
   user: {
     type: Schema.Types.ObjectId,
     ref: "users"
@@ -18,7 +17,6 @@ const EventSchema = new Schema({
     type: String,
     required: true
   },
-  // nadodano lokacija
   location: {
     type: String,
     required: true
@@ -37,8 +35,6 @@ const EventSchema = new Schema({
   profileImg: {
     type: String
   },
-  // za like i unlike, ne dislike vec ukloniti like
-  // povezujemo s korisnikom da znamo tko je likea, pojedini korisnik moze likeat samo jednom
   likes: [
     {
       user: {
@@ -53,7 +49,6 @@ const EventSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "users"
       },
-      // sadrzaj komentara
       text: {
         type: String,
         required: true
@@ -61,9 +56,6 @@ const EventSchema = new Schema({
       name: {
         type: String
       },
-      //   avatar: {
-      //     type: String
-      //   },
       profileImg: {
         type: String
       },

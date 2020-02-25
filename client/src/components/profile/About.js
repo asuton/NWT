@@ -29,10 +29,7 @@ const About = ({ profile: { user, location, age, image } }) => {
           alt=""
           className={`${styles.avatar} rounded-circle img-fluid`}
         />
-      ) : (
-        //<img src={Slika} alt="" className={`${styles.avatar} rounded-circle img-fluid`}/>
-        <p></p>
-      )}
+      ) : (null)}
     </div>
   );
 };

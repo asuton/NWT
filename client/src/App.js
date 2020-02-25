@@ -42,7 +42,6 @@ const App = () => {
             <Switch>
               <Route exact path="/" component={Landing}></Route>
               <Route exact path="/register" component={Register}></Route>
-              {/* koristiti PrivateRoute za one stranice koje samo logirani korinsik vidi */}
               <PrivateRoute
                 exact
                 path="/dashboard"

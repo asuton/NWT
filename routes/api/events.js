@@ -104,13 +104,11 @@ router.delete("/:id", auth, async (req, res) => {
     }
 
     // Osoba koje moze izbrisati event je kreator eventa
-    // Check user
-    // id je string, post.user je object id, da bi bili istog tipa koristimo post.user.toString
+
     if (event.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: "User not authorized" });
     }
 
-    // ako je korisnik autoriziran, ukloni event
     await event.remove();
 
     res.json({ msg: "Event removed" });
@@ -157,7 +155,6 @@ router.put("/unlike/:id", auth, async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);
 
-    // Check if the event has already been liked by this user
     // Ako je duljina jednaka nuli, nije likeano
     if (
       event.likes.filter(like => like.user.toString() === req.user.id)

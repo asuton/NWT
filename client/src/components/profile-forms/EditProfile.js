@@ -1,5 +1,4 @@
 import React, { useState, Fragment, useEffect } from "react";
-//each input is a piece of state pa trebaju state hooks tj useState
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -31,8 +30,7 @@ const EditProfile = ({
       age: loading || !profile.age ? "" : profile.age,
       location: loading || !profile.location ? "" : profile.location,
       bio: loading || !profile.bio ? "" : profile.bio,
-      interests:
-        loading || !profile.interests ? "" : profile.interests.join(", "),
+      interests: loading || !profile.interests ? "" : profile.interests.join(", "),
       twitter: loading || !profile.social ? "" : profile.social.twitter,
       facebook: loading || !profile.social ? "" : profile.social.facebook,
       youtube: loading || !profile.social ? "" : profile.social.youtube,

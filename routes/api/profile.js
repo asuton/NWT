@@ -12,7 +12,7 @@ const User = require("../../models/User");
 router.get("/me", auth, async (req, res) => {
   try {
     //Trazimo ga prema id-u usera
-    //Populate kako bi dodali tj. dohvatili iz Usera ime i avatar (bez avatara)
+    //Populate kako bi dodali tj. dohvatili iz Usera ime 
     const profile = await Profile.findOne({
       user: req.user.id
     }).populate("user", ["name"]);
@@ -32,7 +32,6 @@ router.get("/me", auth, async (req, res) => {
 // @desc   Create or update user profile
 // @access Private
 
-//Koristimo auth i validation (check) middleware
 router.post(
   "/",
   [
@@ -70,7 +69,6 @@ router.post(
     if (bio) profileFields.bio = bio;
     if (interests) {
       profileFields.interests = interests.split(",").map(interest => interest.trim());
-      //Nebitno pise li HTML, PHP ili HTML,PHP tj. je li samo zarez ili zarez i razmak
     }
 
     //Build social object
@@ -134,7 +132,6 @@ router.get("/user/:user_id", async (req, res) => {
     res.json(profile);
   } catch (err) {
     console.error(err.message);
-    // == (na gitu od tutorijala) ili === ????
     if (err.kind === "ObjectId") {
       return res.status(400).json({ msg: "Profile not found" });
     }

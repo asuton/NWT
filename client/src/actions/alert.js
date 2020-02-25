@@ -1,7 +1,7 @@
 import uuid from 'uuid';
 import { SET_ALERT, REMOVE_ALERT } from './types';
 
-//dispatch moguc zbog thunka za vise action typesa iz funkcije
+// Postavljanje Notifikacije
 export const setAlert = (msg, alertType, timeout = 3000) => dispatch => {
     const id = uuid.v4();
     dispatch({
@@ -14,4 +14,3 @@ export const setAlert = (msg, alertType, timeout = 3000) => dispatch => {
         payload: id
     }), timeout);
 };
-

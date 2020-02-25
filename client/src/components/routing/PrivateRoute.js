@@ -12,8 +12,7 @@ const PrivateRoute = ({
     {...rest}
     render={props =>
       !isAuthenticated && !loading ? (
-        // <Redirect to="/login" /> u tutorijalu
-        // nama preusmjeri na pocetnu stranicu na kojoj je login
+        
         <Redirect to="/" />
       ) : (
         <Component {...props} />

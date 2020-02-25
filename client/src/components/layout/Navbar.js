@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+const Navbar = ({ auth: { user, isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <Fragment>
       <button
@@ -22,17 +22,18 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav ml-auto">
           <Link className={styles.link} to="/events">
-            <div className={styles.button}>Events</div>
-          </Link>
-          <Link className={styles.link} to="/dashboard">
-            <div className={styles.button}>Dashboard</div>
+            <div className={styles.button}>Događaji</div>
           </Link>
           <Link className={styles.link} to="/profiles">
             <div className={styles.button}>Korisnici</div>
           </Link>
+          {user && isAuthenticated && loading === false && (
+            <Link className={styles.link} to={`/profile/${user._id}`}>
+              <div className={styles.button}>Moj profil</div>
+            </Link>)
+          }
           <Link className={styles.link} onClick={logout} to="/">
-            {/* <a className={styles.link} onClick={logout} href="/dashboard"> */}
-            <div className={styles.button}>Logout</div>
+            <div className={styles.button}>Odjavi se</div>
           </Link>
         </div>
       </div>

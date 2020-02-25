@@ -1,11 +1,7 @@
 import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE, GET_PROFILES, UPDATE_PROFILE } from "../actions/types";
 
 const initialState = {
-  // profile kad smo logirani radi sve zahtjeve,
-  //dohvaca podatke profila i stavlja tu
-  //takoder ako posjecujemo tudi profil "it will get put in there"
   profile: null,
-  // profiles za stranicu koja izlistava sve profile
   profiles: [],
   loading: true,
   error: {}

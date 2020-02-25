@@ -19,7 +19,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
 
   let filteredProfiles = profiles.filter(
     profile =>
-      profile.user.name.toLowerCase().indexOf(search.toLowerCase()) !== -1
+      (profile.user.name.toLowerCase().indexOf(search.toLowerCase()) !== -1 || profile.location.toLowerCase().indexOf(search.toLowerCase()) !== -1)
   );
 
   const updateSearch = e => {

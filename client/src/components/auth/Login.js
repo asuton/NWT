@@ -21,9 +21,7 @@ const Login = ({ login, isAuthenticated }) => {
     e.preventDefault();
     login(email, password);
   };
-
-  //Redirect if logged in
-  //preusmjeri na dashboard, nama na feed?
+  
   if (isAuthenticated) {
     return <Redirect to="/dashboard" />;
   }

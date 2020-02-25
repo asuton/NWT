@@ -19,33 +19,27 @@ router.post(
         check('password', 'Please enter a password with 6 or more characters').isLength({min: 6})
     ], 
     async (req, res) => {
-        // provjera grešaka unutar requesta
         const errors = validationResult(req);
         if(!errors.isEmpty()){
-            // vraća se json s error porukama iz checka
             return res.status(400).json({errors: errors.array()});
         }
 
         const {name, email, password} = req.body;
 
         try {
-
-        // Provjera da li korisnik postoji
-            let user = await User.findOne({ email }); // async/await jer .findOne vraca promise
+            let user = await User.findOne({ email });
 
             if(user) {
-                // isto kao i za prethodni status
                 return res.status(400).json({ errors: [{ msg: 'User already exists' }]});
             }
 
-            // stvaranje instance a sa .save() sprema se u bazu
             user = new User({
                 name, 
                 email,
                 password
             });
 
-        // Encrypt password
+            // Encrypt password
             // Salt za hashing
 
             const salt = await bcrypt.genSalt(10);
@@ -54,7 +48,7 @@ router.post(
 
             await user.save();
 
-        // Return jsonwebtoken
+            // Return jsonwebtoken
             const payload = {
                 user: {
                     id: user.id

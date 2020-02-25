@@ -7,14 +7,8 @@ import styles from "../../styles/auth.module.css";
 import PropTypes from "prop-types";
 import Wrapper from '../layout/Wrapper';
 
-//
-// Komponenta za registraciju, koristi alert komponentu
-//
-
 const Register = ({ setAlert, register, isAuthenticated }) => {
-  //useState hook slicno kao kod className komponentni
-  //formData sluzi za state, setFormData za postavljanje statea
-  //odi definiran inicijalan state
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,22 +18,19 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
   const { name, email, password, password2 } = formData;
 
-  //tipkanjem u polju poziva se setFormData
-  //state se azurira na temelju id inputa
   const onChange = e =>
     setFormData({ ...formData, [e.target.id]: e.target.value });
 
   const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
-      // Salje poruku (msg) i alert type (alertType), timeout opcionalan parametar
+
       setAlert("Lozinke se ne podudaraju", "danger");
     } else {
       register({ name, email, password });
     }
   };
 
-  //preusmjeri na dashboard, nama na feed?
   if (isAuthenticated) {
     return <Redirect to="/dashboard" />;
   }
@@ -113,7 +104,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   );
 };
 
-// S registerom je moguće koristiti setAlert kao prop
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
@@ -124,7 +114,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-// Connect potreban za rad s reduxom
-// Potrebno proslijediti state koji triba mapirat u props i objekt akcija
-// Zato je moguće koristiti props.setAlert
 export default connect(mapStateToProps, { setAlert, register })(Register);

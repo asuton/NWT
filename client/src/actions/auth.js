@@ -21,7 +21,6 @@ export const loadUser = () => async dispatch => {
   try {
     const res = await axios.get("/api/auth");
 
-    //payload je user (njegovi podatci)
     dispatch({
       type: USER_LOADED,
       payload: res.data
@@ -33,7 +32,7 @@ export const loadUser = () => async dispatch => {
   }
 };
 
-// REGISTRACIJA KORINIKA
+// Register User
 export const register = ({ name, email, password }) => async dispatch => {
   const config = {
     headers: {
@@ -98,7 +97,6 @@ export const login = (email, password) => async dispatch => {
 
 // Logout / Clear Profile
 export const logout = () => dispatch => {
-  // dispatch({ type: CLEAR_PROFILE });
   dispatch({ type: CLEAR_PROFILE });
   dispatch({ type: LOGOUT });
 };

@@ -10,7 +10,7 @@ import Bio from './Bio';
 import About from './About';
 import styles from '../../styles/profileInfo.module.css';
 import Events from './Events';
-import {getEvents} from '../../actions/event';
+import { getEvents } from '../../actions/event';
 
 const Profile = ({ getProfileById, match, getEvents, profile: { profile, loading }, auth, event: {events} }) => {
     useEffect(() => {

@@ -41,7 +41,6 @@ const Event = ({
                     Natrag
                   </button>
                 </Link>
-
                 <div>
                   <button
                     onClick={() => addLike2(event._id)}
@@ -83,7 +82,6 @@ const Event = ({
       <div className={`container ${styles.eventContainer}`}>
         <EventItem event={event} showActions={true} />
       </div>
-
       <div className="container">
         {event.comments.sort((a, b) => (a.date > b.date) ? 1 : -1).map(comment => (
           <CommentItem
@@ -93,7 +91,6 @@ const Event = ({
           />
         ))}
       </div>
-
       <CommentForm eventId={event._id} />
     </Fragment>
   );

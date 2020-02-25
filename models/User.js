@@ -1,8 +1,5 @@
 const mongoose = require("mongoose");
 
-// Model potreban za interakciju s bazom
-// Schema sadrzi polja koja zelimo da resurs ima
-
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,

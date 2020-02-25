@@ -7,29 +7,25 @@ import DashboardActions from "./DashboardActions";
 import { getCurrentProfile } from "../../actions/profile";
 import DashboardEvents from "./DashboardEvents";
 import styles from '../../styles/dashboard.module.css';
-//zeli pozvati getCurrentProfile cim se ovo ucita,
-//buduci da se za to koriste hooks treba importat use effect
 
 const Dashboard = ({
   getCurrentProfile,
   auth: { user },
-  profile: { profile, loading, loaded }
+  profile: { profile, loading }
 }) => {
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
 
-  //ako je profile null i jos uvijek se loada zelimo prikazati spinner
-
   return ( !loading ? (
     <Fragment>
       <div className = {styles.title}>
-        <h1 className="large text-primary">Dashboard</h1>
+        <h1 className="large text-primary">Event App</h1>
         <p className="lead">
-          <i className="fas fa-user" style = {{color: "#007bff"}} /> Welcome {user && user.name}
+          <i className="fas fa-user" style = {{color: "#007bff"}} /> Dobrodošli {user && user.name}
         </p>
       </div>
-      {profile !== null ? (
+      {!loading && profile !== null ? (
         <Fragment>
           <DashboardActions />
           <br></br>
@@ -52,7 +48,6 @@ const Dashboard = ({
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
-  //potreban auth i profile state
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
 };

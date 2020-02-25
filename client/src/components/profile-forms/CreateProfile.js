@@ -1,5 +1,4 @@
 import React, { useState, Fragment } from "react";
-//each input is a piece of state pa trebaju state hooks tj useState
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -173,7 +172,6 @@ const CreateProfile = ({ createProfile, history }) => {
               </div>
             </Fragment>
           )}
-
           <button type="submit" className="btn btn-primary">
             Pošalji
           </button>
@@ -190,5 +188,4 @@ CreateProfile.propTypes = {
   createProfile: PropTypes.func.isRequired
 };
 
-// withRouter dozvaljava da koristimo history object
 export default connect(null, { createProfile })(withRouter(CreateProfile));

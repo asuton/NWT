@@ -25,12 +25,11 @@ const Events = ({ getEvents, event: { events, loading } }) => {
     filter: '1'
   });
 
-  //
-  //  KASNIJE NAME U TITLEEEEEEE!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  //
   const { filter } = Sort;
 
-  let filteredEvents = events.filter(event => event.title.toLowerCase().indexOf(search.toLowerCase()) !== -1);
+  let filteredEvents = events.filter(event => event.title.toLowerCase().indexOf(search.toLowerCase()) !== -1 
+                                                || event.category.toLowerCase().indexOf(search.toLowerCase()) !== -1
+                                                || event.location.toLowerCase().indexOf(search.toLowerCase()) !== -1);
 
   const updateSearch = e => {
       setSearch({ 
@@ -56,7 +55,7 @@ const Events = ({ getEvents, event: { events, loading } }) => {
     <Fragment>
     <div className="container">
       <div className = {styles.create}>
-        <h1 className='large text-primary' style = {{textAlign: "center"}}>Events</h1>
+        <h1 className='large text-primary' style = {{textAlign: "center"}}>Događaji</h1>
         <button
             onClick={() =>  toggleCreateEvent(!displayCreateEvent)}
             type="button"

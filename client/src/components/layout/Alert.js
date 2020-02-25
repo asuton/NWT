@@ -16,9 +16,6 @@ Alert.propTypes = {
     alerts: PropTypes.array.isRequired
 };
 
-// Zelimo uzet state kako bi imali pristup
-// Bilo koji state za koristit kao props iz rootReducera
-// Sad imamo props.alerts odnosno  alerts zbog destruktuiranja
 const mapStateToProps = state => ({
     alerts: state.alert
 });

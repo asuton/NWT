@@ -29,14 +29,10 @@ export const getCurrentProfile = () => async dispatch => {
 // Create or update profile
 export const createProfile = (
   formData,
-  // redirect ater submit form, pass in the history object
-  //which has a method puhs that will redirect to a client side route
   history,
-  //edit da znamo jed edit, update ili create profile
   edit = false
 ) => async dispatch => {
   try {
-    // saljemo podatke pa treba config objekt
     const config = {
       headers: {
         "Content-Type": "application/json"
@@ -52,7 +48,6 @@ export const createProfile = (
 
     dispatch(setAlert(edit ? "Profile Updated" : "Profile Created", "success"));
 
-    //ako editamo ne redirect, ako kreiramo redirect na dashboard
     if (!edit) {
       history.push("/dashboard");
     }
@@ -72,7 +67,7 @@ export const createProfile = (
 
 // Svi profili
 export const getProfiles = () => async dispatch => {
-  // Kad pogledamo neciji profil da ne ostane profil iz statea
+
   dispatch({ type: CLEAR_PROFILE });
 
   try {

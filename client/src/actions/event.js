@@ -33,7 +33,6 @@ export const getEvents = () => async dispatch => {
 };
 
 // ADD LIKE
-//saljemo id od eventa da se zna koji se event likea
 export const addLike = id => async dispatch => {
   try {
     const res = await axios.put(`/api/events/like/${id}`);
@@ -41,7 +40,6 @@ export const addLike = id => async dispatch => {
     dispatch({
       type: UPDATE_LIKES,
       payload: { id, likes: res.data }
-      // objekt s event id-em, likes su objekt koji se vraca tj polje lajkova
     });
   } catch (err) {
     dispatch({
