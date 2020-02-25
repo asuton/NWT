@@ -97,7 +97,7 @@ const Events = ({ getEvents, event: { events, loading } }) => {
           <div style = {{width: '100%'}}>
             {filter === '1' ? 
               (filteredEvents.sort((a, b) => (a.date > b.date) ? -1 : 1).map(event => (<EventItem key={event._id} event={event} />))) 
-              : (filteredEvents.sort((a, b) =>  (a.eventDate > b.eventDate) ? 1 : -1).map(event => (<EventItem key={event._id} event={event} />)))}
+              : (filteredEvents.sort((a, b) =>  (a.eventDate > b.eventDate) ? -1 : 1).map(event => (<EventItem key={event._id} event={event} />)))}
           </div>
         </div>
       </div>

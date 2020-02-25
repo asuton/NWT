@@ -10,7 +10,7 @@ const EventForm = ({ addEvent }) => {
     title: '',
     location: '',
     eventDate: '',
-    category: '',
+    category: 'Zabava',
     eventImg: ''
   });
 
@@ -57,7 +57,7 @@ const EventForm = ({ addEvent }) => {
       title: '',
       location: '',
       eventDate: '',
-      category: '',
+      category: 'Zabava',
       eventImg: ''
     });
   };
