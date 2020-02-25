@@ -11,7 +11,8 @@ import {
   ADD_COMMENT,
   REMOVE_COMMENT,
   CLEAR_EVENT,
-  DELETE_EVENT2
+  DELETE_EVENT2,
+  UPDATE_EVENT
 } from "./types";
 
 // Get events
@@ -221,6 +222,40 @@ export const deleteComment = (eventId, commentId) => async dispatch => {
 
     dispatch(setAlert("Comment Removed", "success"));
   } catch (err) {
+    dispatch({
+      type: EVENT_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+export const uploadCover = (eventId, image, history) => async dispatch => {
+  try {
+   
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    let imageJSON = {
+      image
+    }
+    const res = await axios.post(`/api/events/cover/${eventId}`, imageJSON, config);
+    
+    dispatch({
+      type: UPDATE_EVENT,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Slika događaja ažurirana', 'success'));
+
+    history.push('/events');
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+    }
     dispatch({
       type: EVENT_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }

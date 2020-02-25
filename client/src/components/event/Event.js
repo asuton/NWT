@@ -9,6 +9,7 @@ import CommentItem from "../event/CommentItem";
 import { getEvent } from "../../actions/event";
 import styles from "../../styles/comment.module.css";
 import { addLike2, removeLike2, deleteEvent2 } from "../../actions/event";
+import ImageUpload from "./ImageUpload";
 
 const Event = ({
   getEvent,

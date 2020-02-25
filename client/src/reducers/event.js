@@ -9,7 +9,8 @@ import {
   ADD_COMMENT,
   REMOVE_COMMENT, 
   CLEAR_EVENT,
-  DELETE_EVENT2
+  DELETE_EVENT2,
+  UPDATE_EVENT
 } from "../actions/types";
 
 const initialState = {
@@ -98,7 +99,13 @@ export default function(state = initialState, action) {
 				...state,
 				event: null,
 				loading: false
-			};
+      };
+    case UPDATE_EVENT:
+      return {
+				...state,
+				event: payload,
+				loading: false
+		  };
     default:
       return state;
   }

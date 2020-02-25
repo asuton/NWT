@@ -262,4 +262,17 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
   }
 });
 
+router.post('/cover/:id', auth, async (req, res) => {
+  try {
+    let event = await Event.findById(req.params.id);
+    const { image } = req.body;
+    event.eventImg = image;
+    await event.save();
+    return res.json(event);
+  } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+  }
+});
+
 module.exports = router;

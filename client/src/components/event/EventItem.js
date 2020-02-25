@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { getProfiles } from "../../actions/profile";
 import styles from "../../styles/eventItem.module.css";
 import Spinner from "../layout/Spinner";
+import ImageUpload from "./ImageUpload";
 
 const EventItem = ({
   profile: { profiles, loading },
@@ -23,7 +24,8 @@ const EventItem = ({
     profileImg,
     date,
     title
-  }
+  },
+  auth
 }) => {
   useEffect(() => {
     getProfiles();
@@ -78,6 +80,10 @@ const EventItem = ({
                   src={eventImg}
                 />
               ) : (null)}
+              {!auth.loading && user === auth.user._id && (
+                <div style = {{position: "absolute", bottom: "0px", right: "5px"}}>
+                  <ImageUpload eventId = {_id}></ImageUpload>
+                </div> )}
             </div>
             <div className={`card-body ${styles.cardBody}`}>
               <Link to={`/events/${_id}`}>
@@ -125,11 +131,13 @@ EventItem.defaultProps = {
 
 EventItem.propTypes = {
   event: PropTypes.object.isRequired,
-  getProfiles: PropTypes.func.isRequired
+  getProfiles: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile
+  profile: state.profile,
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, { getProfiles })(EventItem);
