@@ -49,7 +49,7 @@ const CommentItem = ({
       )}
     </div>
     <div>
-      <p className={styles.text}>{text}</p>
+      <p className={styles.text} style = {{whiteSpace: "break-spaces"}}>{text}</p>
       <small className={styles.date}>
         Komentirano <Moment format="HH:mm DD.MM.YYYY.">{date}</Moment>
       </small>

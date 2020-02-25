@@ -14,8 +14,8 @@
   border: solid;
   border-radius: 0.25rem;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  -webkit-box-shadow: 0 7px 15px 0 rgba(0,0,0,0.3);
-  box-shadow: 0 7px 15px 0 rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 7px 7px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 7px 7px 0 rgba(0,0,0,0.3);
   padding: 10px;
   margin-bottom: 20px;
 }

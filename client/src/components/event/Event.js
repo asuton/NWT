@@ -85,7 +85,7 @@ const Event = ({
       </div>
 
       <div className="container">
-        {event.comments.map(comment => (
+        {event.comments.sort((a, b) => (a.date > b.date) ? 1 : -1).map(comment => (
           <CommentItem
             key={comment._id}
             comment={comment}
