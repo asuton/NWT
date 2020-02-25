@@ -8,7 +8,6 @@ const Events = ({profile, events}) => {
     let filteredGoingEvents = events.filter(event => {
         for(let i = 0; i < event.likes.length; i++){
             if(event.likes[i].user === profile.user._id) return true;
-            else return false;
         }
     });
     return (
