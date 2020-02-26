@@ -27,7 +27,7 @@ const EditProfile = ({
     getCurrentProfile();
 
     setFormData({
-      age: loading || !profile.age ? "" : profile.age,
+      age: loading || !profile.age ? "" : profile.age.slice(0, 10),
       location: loading || !profile.location ? "" : profile.location,
       bio: loading || !profile.bio ? "" : profile.bio,
       interests: loading || !profile.interests ? "" : profile.interests.join(", "),
