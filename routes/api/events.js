@@ -20,6 +20,18 @@ router.post(
     [
       check("text", "Text is required")
         .not()
+        .isEmpty(),
+      check("title", "Title is required")
+        .not()
+        .isEmpty(),
+      check("location", "Location is required")
+        .not()
+        .isEmpty(),
+      check("eventDate", "Event date is required")
+        .not()
+        .isEmpty(),  
+      check("category", "Category is required")
+        .not()
         .isEmpty()
     ]
   ],

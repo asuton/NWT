@@ -53,7 +53,7 @@ const Events = ({ getEvents, event: { events, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
-    <div className="container">
+    <div className="container" style = {{paddingLeft: '0px', paddingRight: '0px'}}>
       <div className = {styles.create}>
         <h1 className='large text-primary' style = {{textAlign: "center"}}>Događaji</h1>
         <button

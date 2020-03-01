@@ -59,7 +59,7 @@ const DashboardEvents = ({ getEvents, auth, event: { events } }) => {
               filteredGoingEvents.map(event => (
                 <EventGoingCard
                   title={event.title}
-                  date={event.date}
+                  date={event.eventDate}
                   id={event._id}
                   name={event.name}
                   user={event.user}

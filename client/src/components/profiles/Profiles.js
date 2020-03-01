@@ -30,7 +30,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   };
 
   return !loading && profiles !== null ? (
-    <div className="container">
+    <div className="container" style = {{paddingLeft: '0px', paddingRight: '0px'}}>
       <div style={{ width: "100%" }}>
         <h1 className="large text-primary" style={{ textAlign: "center" }}>
           Korisnici
